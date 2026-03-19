@@ -6,30 +6,37 @@
 /* ---------- CSS Variables ---------- */
 :root {
     /* Colors */
-    --bg-primary: #050505;
-    --bg-secondary: #0a0a0a;
-    --bg-tertiary: #111111;
-    --bg-card: #0d0d0d;
-    --bg-card-hover: #141414;
+    --bg-primary: #030408;
+    --bg-secondary: #080a11;
+    --bg-tertiary: #0c0e18;
+    
+    --bg-glass-card: rgba(255, 255, 255, 0.02);
+    --bg-glass-hover: rgba(255, 255, 255, 0.04);
+    --bg-card: var(--bg-glass-card);
+    --bg-card-hover: var(--bg-glass-hover);
 
-    --text-primary: #f0f0f0;
-    --text-secondary: #a0a0a0;
-    --text-tertiary: #6e7681;
-    --text-muted: #484848;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-tertiary: #71717a;
+    --text-muted: #52525b;
 
-    --accent-blue: #2563eb;
-    --accent-purple: #7c3aed;
+    --accent-blue: #3b82f6;
+    --accent-purple: #8b5cf6;
     --accent-cyan: #06b6d4;
     --accent-green: #10b981;
     --accent-yellow: #f59e0b;
     --accent-red: #ef4444;
 
-    --gradient-primary: linear-gradient(135deg, #2563eb, #7c3aed);
-    --gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
-    --gradient-border: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.3));
+    --gradient-primary: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    --gradient-subtle: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    --gradient-border: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
 
-    --border-color: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.12);
+    --border-color: rgba(255, 255, 255, 0.05);
+    --border-hover: rgba(255, 255, 255, 0.15);
+    --border-inner: rgba(255, 255, 255, 0.03);
+
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 24px rgba(59, 130, 246, 0.3);
 
     /* Typography */
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -41,7 +48,7 @@
 
     /* Animation */
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* ---------- Reset & Base ---------- */
@@ -66,6 +73,28 @@ body {
     color: var(--text-primary);
     line-height: 1.7;
     overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -10%;
+    width: 120%;
+    height: 150%;
+    background: radial-gradient(circle at 50% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 10% 90%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Global Glass Mixin for Cards */
+.about-card, .project-hero, .case-card, .arch-tier, .innovation-card, .metrics-bar,
+.timeline-content, .stack-category, .github-card, .philosophy-card, .edu-card, .cert-card, .contact-item {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-glass), inset 0 1px 0 var(--border-inner);
 }
 
 ::selection {
@@ -127,10 +156,10 @@ img {
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.03em;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
     color: var(--text-primary);
 }
 
@@ -172,7 +201,7 @@ img {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+    box-shadow: var(--shadow-glow);
 }
 
 .btn-secondary {
@@ -361,10 +390,10 @@ img {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.04em;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
     margin-bottom: 24px;
 }
 
@@ -1550,5 +1579,89 @@ footer {
 
     .btn {
         justify-content: center;
+    }
+}
+
+/* ---------- CUSTOM CURSOR & SPOTLIGHT EFFECT ---------- */
+
+/* Hide default cursor globally */
+body, a, button, .btn {
+    cursor: none !important;
+}
+
+.custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 6px; height: 6px;
+    background: var(--text-primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    margin-left: -3px;
+    margin-top: -3px;
+    transition: opacity 0.2s;
+}
+
+.custom-cursor-follower {
+    position: fixed;
+    top: 0; left: 0;
+    width: 40px; height: 40px;
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    margin-left: -20px;
+    margin-top: -20px;
+    transition: width 0.3s var(--ease-spring), 
+                height 0.3s var(--ease-spring), 
+                margin 0.3s var(--ease-spring),
+                background 0.3s, border-color 0.3s;
+}
+
+.custom-cursor-follower.hovering {
+    width: 64px;
+    height: 64px;
+    margin-left: -32px;
+    margin-top: -32px;
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.8);
+}
+
+/* Magnetic Spotlight Effect on Cards */
+.spotlight-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(800px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(255, 255, 255, 0.05), transparent 40%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.spotlight-card:hover::after {
+    opacity: 1;
+}
+
+.spotlight-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 1024px) {
+    /* Disable custom cursor on touch devices / tablets */
+    body, a, button, .btn {
+        cursor: auto !important;
+    }
+    .custom-cursor, .custom-cursor-follower {
+        display: none !important;
     }
 }

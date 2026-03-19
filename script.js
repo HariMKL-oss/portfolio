@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounterAnimation();
     initRotatingText();
     initSmoothScroll();
+    initCardSpotlights();
+    initCustomCursor();
 });
 
 /* ---------- PARTICLE CANVAS ---------- */
@@ -35,51 +37,83 @@ function initParticleCanvas() {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
     });
+    
+    // Clear mouse tracking if mouse leaves window
+    window.addEventListener('mouseout', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
 
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 0.4;
-            this.vy = (Math.random() - 0.5) * 0.4;
-            this.radius = Math.random() * 1.5 + 0.5;
-            this.opacity = Math.random() * 0.4 + 0.1;
+            // 3D feel: smaller particles move slower
+            this.z = Math.random() * 2 + 0.5;
+            this.vx = (Math.random() - 0.5) * (1 / this.z);
+            this.vy = (Math.random() - 0.5) * (1 / this.z);
+            this.radius = 1.5 / this.z;
+            this.opacity = (1 / this.z) * 0.6;
+            // Mixed colors between blue and purple
+            this.isPurple = Math.random() > 0.7;
         }
 
         update() {
             this.x += this.vx;
             this.y += this.vy;
 
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            // Loop smoothly across edges
+            if (this.x < -10) this.x = canvas.width + 10;
+            if (this.x > canvas.width + 10) this.x = -10;
+            if (this.y < -10) this.y = canvas.height + 10;
+            if (this.y > canvas.height + 10) this.y = -10;
 
-            // Mouse interaction
+            // Fluid Mouse interaction
             if (mouse.x !== null) {
                 const dx = mouse.x - this.x;
                 const dy = mouse.y - this.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
-                    const force = (120 - dist) / 120;
-                    this.vx -= (dx / dist) * force * 0.02;
-                    this.vy -= (dy / dist) * force * 0.02;
+                if (dist < 200) {
+                    const force = (200 - dist) / 200;
+                    this.vx -= (dx / dist) * force * 0.03 * (1 / this.z);
+                    this.vy -= (dy / dist) * force * 0.03 * (1 / this.z);
+                    
+                    // Connect particle to mouse with bright line
+                    if (this.z < 2) {
+                        ctx.beginPath();
+                        ctx.moveTo(this.x, this.y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${force * 0.2})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
                 }
             }
 
-            // Dampen velocity
-            this.vx *= 0.999;
-            this.vy *= 0.999;
+            // Return to base velocity gently
+            this.vx = this.vx * 0.98 + ((Math.random() - 0.5) * 0.01);
+            this.vy = this.vy * 0.98 + ((Math.random() - 0.5) * 0.01);
+            
+            // Limit speed
+            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+            if (speed > 2) {
+                this.vx = (this.vx / speed) * 2;
+                this.vy = (this.vy / speed) * 2;
+            }
         }
 
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(37, 99, 235, ${this.opacity})`;
+            ctx.fillStyle = this.isPurple 
+                ? `rgba(139, 92, 246, ${this.opacity})` 
+                : `rgba(59, 130, 246, ${this.opacity})`;
             ctx.fill();
         }
     }
 
-    // Create particles
-    const particleCount = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+    // Create particles - fewer particles for luxury feel, but more impactful connections
+    const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 10000));
     for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle());
     }
@@ -87,17 +121,29 @@ function initParticleCanvas() {
     function drawConnections() {
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
+                // Don't connect particles on vastly different Z planes
+                if (Math.abs(particles[i].z - particles[j].z) > 1.5) continue;
+
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 150) {
-                    const opacity = (1 - dist / 150) * 0.15;
+                if (dist < 180) {
+                    const opacity = (1 - dist / 180) * 0.25;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(37, 99, 235, ${opacity})`;
-                    ctx.lineWidth = 0.5;
+                    
+                    // Create gradient line between particles
+                    const grad = ctx.createLinearGradient(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
+                    const color1 = particles[i].isPurple ? `139, 92, 246` : `59, 130, 246`;
+                    const color2 = particles[j].isPurple ? `139, 92, 246` : `59, 130, 246`;
+                    
+                    grad.addColorStop(0, `rgba(${color1}, ${opacity})`);
+                    grad.addColorStop(1, `rgba(${color2}, ${opacity})`);
+                    
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = 1 / particles[i].z;
                     ctx.stroke();
                 }
             }
@@ -106,11 +152,17 @@ function initParticleCanvas() {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Use composite operation for glowing overlapping links
+        ctx.globalCompositeOperation = 'screen';
+        
+        drawConnections();
         particles.forEach(p => {
             p.update();
             p.draw();
         });
-        drawConnections();
+        
+        ctx.globalCompositeOperation = 'source-over';
         animationId = requestAnimationFrame(animate);
     }
 
@@ -301,4 +353,56 @@ function initSmoothScroll() {
             }
         });
     });
+}
+
+/* ---------- CARD SPOTLIGHTS ---------- */
+function initCardSpotlights() {
+    const cards = document.querySelectorAll('.about-card, .project-hero, .case-card, .arch-tier, .innovation-card, .metrics-bar, .timeline-content, .stack-category, .github-card, .philosophy-card, .edu-card, .cert-card, .contact-item');
+    
+    cards.forEach(card => {
+        card.classList.add('spotlight-card');
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+}
+
+/* ---------- CUSTOM CURSOR ---------- */
+function initCustomCursor() {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    const follower = document.createElement('div');
+    follower.className = 'custom-cursor-follower';
+    document.body.appendChild(cursor);
+    document.body.appendChild(follower);
+
+    let cursorX = window.innerWidth / 2;
+    let cursorY = window.innerHeight / 2;
+    let followerX = cursorX;
+    let followerY = cursorY;
+
+    window.addEventListener('mousemove', (e) => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+        cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+        
+        const target = e.target;
+        if (target.closest('a') || target.closest('button')) {
+            follower.classList.add('hovering');
+        } else {
+            follower.classList.remove('hovering');
+        }
+    });
+
+    function animateFollower() {
+        followerX += (cursorX - followerX) * 0.15;
+        followerY += (cursorY - followerY) * 0.15;
+        follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
+        requestAnimationFrame(animateFollower);
+    }
+    animateFollower();
 }
