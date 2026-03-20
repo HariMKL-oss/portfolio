@@ -331,16 +331,15 @@
                             <span class="timeline-date">Mar 2023 — Present</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Architected <strong>end-to-end ML feature pipelines</strong> using Python, dbt, and Airflow on AWS/Snowflake, cutting feature engineering cycle time by 40%.</li>
-                            <li>Designed and optimized <strong>prompt chains</strong> for GPT-4-based document classification, improving output precision by 28% and reducing hallucination rates by 35%.</li>
-                            <li>Built and deployed <strong>real-time data ingestion connectors</strong> processing 2M+ events/day via Fivetran and custom Python services.</li>
-                            <li>Deployed <strong>containerized ML model serving infrastructure</strong> on Kubernetes (EKS), reducing model deployment time from 3 days to 4 hours.</li>
-                            <li>Implemented <strong>CI/CD pipelines</strong> with GitHub Actions and Terraform for automated model packaging and testing.</li>
-                            <li>Engineered secure <strong>role-based access controls</strong> and audit logging in Snowflake for ML model outputs handling PII data.</li>
-                            <li>Prototyped a <strong>RAG pipeline</strong> using LangChain and ChromaDB, reducing compliance document lookup time from ~20 minutes to &lt;90s.</li>
+                            <li>Owned the end-to-end build of a <strong>RAG-based document intelligence pipeline</strong> using LangChain, FAISS, and GPT-4 over 50K+ internal regulatory documents. Compliance analysts went from spending 20 minutes per lookup to getting answers in under 90 seconds.</li>
+                            <li>Designed <strong>prompt chains</strong> with LangGraph for multi-step classification and summarization of loan agreements and audit reports, improving classification precision by 28%.</li>
+                            <li>Contributed to the fraud analytics team by building <strong>feature engineering pipelines</strong> in Python, dbt, and Airflow on AWS/Snowflake, generating 60+ risk signals for the team's XGBoost models.</li>
+                            <li>Deployed <strong>model serving infrastructure</strong> on Kubernetes (EKS) with MLflow model registry, bringing deployment time down from 3 days to 4 hours with zero-downtime rolling updates.</li>
+                            <li>Set up <strong>model monitoring</strong> using Prometheus, Grafana, and CloudWatch to track inference latency, prediction drift, and accuracy trends, keeping uptime above 99%.</li>
+                            <li>Worked with InfoSec to engineer <strong>role-based access controls</strong> and audit logging in Snowflake for model outputs handling PII and financial data, ensuring SOX and FINRA compliance.</li>
                         </ul>
                         <div class="timeline-tags">
-                            <span>AWS</span><span>Snowflake</span><span>Airflow</span><span>Kubernetes</span><span>Terraform</span><span>LangChain</span><span>ChromaDB</span>
+                            <span>Python</span><span>LangChain</span><span>LangGraph</span><span>FAISS</span><span>GPT-4</span><span>AWS</span><span>Snowflake</span><span>Kubernetes</span><span>Prometheus</span>
                         </div>
                     </div>
                 </div>
@@ -356,15 +355,15 @@
                             <span class="timeline-date">Jan 2022 — Jan 2023</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Built and deployed a <strong>product recommendation engine</strong> using scikit-learn (hybrid filtering), increasing click-through rate by 18%.</li>
-                            <li>Developed <strong>predictive models</strong> in Python and R for demand forecasting across 3 enterprise retail clients, achieving MAPE of 11.2%.</li>
-                            <li>Constructed <strong>agentic LLM workflows</strong> using LangChain and Pydantic for document summarization, handling 8K+ daily queries.</li>
-                            <li>Engineered <strong>scalable ML training and serving pipelines</strong> on AWS (SageMaker, S3, Lambda, EC2), reducing deployment cycles to 3 days.</li>
-                            <li>Implemented <strong>model monitoring dashboards</strong> in Tableau tracking drift, latency, and accuracy, maintaining &gt;95% SLA.</li>
-                            <li>Deployed <strong>ML microservices</strong> in Docker on AWS ECS with auto-scaling, handling 3x traffic spikes without latency degradation.</li>
+                            <li>Built a patient readmission <strong>risk scoring model</strong> using XGBoost and Random Forest on structured EHR data, improving early identification by about 15%.</li>
+                            <li>Wrote <strong>text preprocessing and entity extraction scripts</strong> using spaCy and regex-based NLP to parse physician discharge summaries for downstream risk models.</li>
+                            <li>Implemented <strong>time-series anomaly detection</strong> on patient vitals using ARIMA and LSTM models, providing 6 to 12 hour early warning signals.</li>
+                            <li>Set up <strong>ML training and batch inference pipelines</strong> on AWS SageMaker, automating retraining on weekly data refreshes and cutting handoff time from 2 weeks to 3 days.</li>
+                            <li>Created <strong>analytics dashboards</strong> in Tableau tracking model accuracy, patient risk score distributions, and readmission trends for quarterly care quality reviews.</li>
+                            <li>Deployed <strong>inference endpoints</strong> in Docker on AWS ECS with auto-scaling configuration, keeping latency under 200ms (p99) during seasonal volume spikes.</li>
                         </ul>
                         <div class="timeline-tags">
-                            <span>AWS</span><span>SageMaker</span><span>scikit-learn</span><span>LangChain</span><span>Pydantic</span><span>Docker</span><span>Tableau</span>
+                            <span>Python</span><span>XGBoost</span><span>spaCy</span><span>ARIMA</span><span>LSTM</span><span>AWS SageMaker</span><span>Tableau</span><span>Docker</span>
                         </div>
                     </div>
                 </div>
@@ -380,14 +379,15 @@
                             <span class="timeline-date">Oct 2020 — Dec 2021</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Designed and built <strong>ETL pipelines</strong> on Azure (Data Factory, Azure SQL) processing 500K+ records/day for feature stores.</li>
-                            <li>Developed <strong>automated feature engineering scripts</strong> in Python and SQL, reducing manual data prep time by 60%.</li>
-                            <li>Implemented <strong>data validation and quality checks</strong> using Great Expectations, catching upstream schema changes before ML training.</li>
-                            <li>Automated <strong>infrastructure provisioning and CI/CD</strong> for ML-adjacent data services using Terraform and Azure DevOps.</li>
-                            <li>Performed <strong>data migration</strong> across Azure and AWS cloud environments for 2 client projects, ensuring zero data loss and &lt;2 hours downtime.</li>
+                            <li>Designed and built <strong>ETL pipelines</strong> on Azure Data Factory and Azure SQL processing 500K+ daily network event records for data science teams.</li>
+                            <li>Engineered <strong>120+ subscriber behavioral features</strong> from raw CDR and CRM data in Python and SQL feeding churn prediction and network quality models.</li>
+                            <li>Implemented <strong>data quality validation</strong> using Great Expectations on network telemetry feeds, catching 12% of upstream schema changes and data drift.</li>
+                            <li>Built <strong>automated data refresh and orchestration workflows</strong> using Azure DevOps and Terraform, cutting deployment overhead by 50%.</li>
+                            <li>Handled <strong>migration of 2TB+ subscriber analytics datasets</strong> from Azure to AWS during platform consolidation with zero data loss under 2 hours of downtime.</li>
+                            <li>Worked closely with data scientists to <strong>define feature schemas and validate training data quality</strong>, debugging issues affecting model performance.</li>
                         </ul>
                         <div class="timeline-tags">
-                            <span>Azure</span><span>Data Factory</span><span>Python</span><span>SQL</span><span>Terraform</span><span>Azure DevOps</span>
+                            <span>Azure Data Factory</span><span>Python</span><span>SQL</span><span>Terraform</span><span>Great Expectations</span><span>Azure DevOps</span>
                         </div>
                     </div>
                 </div>
@@ -428,7 +428,7 @@
                     <div class="stack-items">
                         <div class="stack-item"><span class="stack-dot"></span>AWS</div>
                         <div class="stack-item"><span class="stack-dot"></span>Azure</div>
-                        <div class="stack-item"><span class="stack-dot"></span>GCP</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Google Vertex AI</div>
                         <div class="stack-item"><span class="stack-dot"></span>SageMaker</div>
                         <div class="stack-item"><span class="stack-dot"></span>Azure ML</div>
                         <div class="stack-item"><span class="stack-dot"></span>Lambda</div>
@@ -528,14 +528,13 @@
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
                         </svg>
-                        <a href="https://github.com/HariMKL-oss/ai-job-applier" target="_blank"
+                        <a href="https://github.com/HariMKL-oss" target="_blank"
                             class="github-card-link">↗</a>
                     </div>
-                    <h3>AI Job Applier</h3>
-                    <p>Intelligent automation engine that streamlines job applications using AI-powered form filling,
-                        resume parsing, and smart matching algorithms.</p>
+                    <h3>JobMatch AI</h3>
+                    <p>Semantic job-resume matching tool using Google Vertex AI embeddings and Pinecone. LangChain-based pipeline generates tailored resume suggestions via a Streamlit UI.</p>
                     <div class="github-card-tags">
-                        <span>Python</span><span>Automation</span><span>NLP</span><span>AI Agents</span>
+                        <span>Python</span><span>Vertex AI</span><span>LangChain</span><span>Pinecone</span>
                     </div>
                     <div class="github-card-meta">
                         <span class="gh-lang"><span class="gh-dot" style="background:#3572A5"></span>Python</span>
