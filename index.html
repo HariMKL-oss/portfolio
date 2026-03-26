@@ -63,7 +63,7 @@
                 <span class="hero-line">that ship to production.</span>
             </h1>
             <p class="hero-subtitle animate-in">
-                Dynamic and results-driven AI/ML Engineer with 5+ years of experience building and deploying ML, GenAI, and real-time data systems across banking, healthcare, and telecom. Specialized in LLM-powered assistants, RAG architectures, MLOps, and cloud-native model deployment.
+                AI/ML Engineer with 5+ years of experience building production ML, GenAI, and data systems across banking, healthcare, and telecom. Currently at Bank of America, developing document intelligence and compliance analytics solutions using RAG, NLP, and LLM workflows for risk and compliance teams. Hands-on experience with Python, AWS, LangChain, vector databases, model deployment, and MLOps for enterprise-scale applications. Proven track record of improving search, classification, monitoring, and operational efficiency in regulated environments.
             </p>
             <div class="hero-buttons animate-in">
                 <a href="#project" class="btn btn-primary">
@@ -206,9 +206,7 @@
                         <h3>Solution</h3>
                     </div>
                     <p>
-                        A three-tier AI inference pipeline that delivers sub-second food safety verdicts.
-                        On-device OCR handles 70% of products with zero network calls. Ambiguous cases
-                        escalate to quantized SLMs, then cloud LLMs for complex analysis.
+                        A multimodal LLM orchestration layer integrating Gemini 2.5 Pro, GPT-4o, and on-device SLMs (Llama 3.2 3B, Gemma 3 4B) with automatic tier escalation based on OCR confidence thresholds. Real-time OCR + NLP pipeline using ML Kit Text Recognition V2 for ingredient label extraction gets >90% per-word accuracy.
                     </p>
                 </div>
             </div>
@@ -224,11 +222,11 @@
                         </div>
                         <h4>On-Device Fast Path</h4>
                         <div class="tier-techs">
-                            <span>ML Kit OCR</span>
+                            <span>ML Kit OCR V2</span>
                             <span>Keyword Matcher</span>
-                            <span>Barcode Scanner</span>
+                            <span>Barcode Scanner (UPC/EAN)</span>
                         </div>
-                        <p class="tier-note">Handles ~70% of products — zero network calls</p>
+                        <p class="tier-note">Handles ~70% of products — zero network calls, offline capability</p>
                         <div class="tier-arrow">↓</div>
                     </div>
                     <div class="arch-tier tier-2">
@@ -238,11 +236,10 @@
                         </div>
                         <h4>On-Device SLM Reasoning</h4>
                         <div class="tier-techs">
-                            <span>Gemma 3</span>
-                            <span>Phi-4-mini</span>
-                            <span>Llama 3.2 (4-bit)</span>
+                            <span>Gemma 3 4B</span>
+                            <span>Llama 3.2 3B</span>
                         </div>
-                        <p class="tier-note">Resolves ambiguity without cloud dependency</p>
+                        <p class="tier-note">Resolves ambiguity without cloud dependency based on confidence thresholds</p>
                         <div class="tier-arrow">↓</div>
                     </div>
                     <div class="arch-tier tier-3">
@@ -254,9 +251,8 @@
                         <div class="tier-techs">
                             <span>Gemini 2.5 Pro</span>
                             <span>GPT-4o</span>
-                            <span>Open Food Facts</span>
                         </div>
-                        <p class="tier-note">Complex labels, non-English, damaged packaging</p>
+                        <p class="tier-note">Complex labels. Optimized for latency (&lt;1.5s) and cost ($0.004/call).</p>
                     </div>
                 </div>
             </div>
@@ -271,41 +267,38 @@
                 </div>
                 <div class="innovation-card reveal">
                     <div class="innovation-number">02</div>
-                    <h4>Deterministic Verdict Logic</h4>
-                    <p>AI handles perception only — the verdict filter is 100% rule-based against a curated toxicity
-                        database. No hallucination risk.</p>
+                    <h4>OCR + NLP Pipeline</h4>
+                    <p>Real-time pipeline using ML Kit Text Recognition V2 achieving >90% per-word accuracy across a 3M+ product database.</p>
                 </div>
                 <div class="innovation-card reveal">
                     <div class="innovation-number">03</div>
-                    <h4>Fuzzy Ingredient Classification</h4>
-                    <p>Handles misspelled, abbreviated, and aliased ingredient names using embedding similarity and
-                        n-gram matching.</p>
+                    <h4>Automatic Tier Escalation</h4>
+                    <p>Three-tier architecture prioritizes speed and offline function, escalating to on-device SLMs or cloud LLMs only when OCR confidence is low.</p>
                 </div>
                 <div class="innovation-card reveal">
                     <div class="innovation-number">04</div>
-                    <h4>Latency-Optimized Routing</h4>
-                    <p>Adaptive inference pipeline that resolves 70%+ of queries on-device under 500ms, escalating only
-                        when necessary.</p>
+                    <h4>Latency & Cost Optimization</h4>
+                    <p>Adaptive inference pipeline resolves 70%+ of queries on-device, keeping average latency under 1.5s and overall cost to an incredibly efficient $0.004/call.</p>
                 </div>
             </div>
 
             <!-- Performance Metrics -->
             <div class="metrics-bar reveal">
                 <div class="perf-metric">
-                    <span class="perf-value">&lt;1s</span>
-                    <span class="perf-label">Avg Latency (Tier 1)</span>
+                    <span class="perf-value">&lt;1.5s</span>
+                    <span class="perf-label">Avg Cloud Latency</span>
                 </div>
                 <div class="perf-metric">
-                    <span class="perf-value">97%+</span>
-                    <span class="perf-label">Verdict Accuracy</span>
+                    <span class="perf-value">&gt;90%</span>
+                    <span class="perf-label">Per-word OCR Accuracy</span>
                 </div>
                 <div class="perf-metric">
                     <span class="perf-value">70%</span>
-                    <span class="perf-label">On-Device Resolution</span>
+                    <span class="perf-label">Offline Coverage</span>
                 </div>
                 <div class="perf-metric">
-                    <span class="perf-value">40+</span>
-                    <span class="perf-label">Toxicity Rules</span>
+                    <span class="perf-value">$0.004</span>
+                    <span class="perf-label">Avg Cost / Call</span>
                 </div>
             </div>
         </div>
@@ -331,11 +324,12 @@
                             <span class="timeline-date">Mar 2024 — Present</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Built a <strong>RAG-based document intelligence pipeline</strong> using LangChain, FAISS, and GPT-4 over 50K+ regulatory documents (BSA/AML, KYC, audit standards), reducing compliance lookup time from 20 minutes to 90 seconds.</li>
-                            <li>Designed <strong>prompt chains with LangGraph</strong> for multi-step classification and summarization of loan agreements, improving classification precision by 28% over prior keyword-matching through iterative prompt tuning and evaluation.</li>
-                            <li>Built <strong>feature engineering pipelines</strong> in Python, dbt, and Airflow on AWS/Snowflake, generating 60+ risk signals from raw transaction streams feeding the team's XGBoost-based fraud anomaly detection models.</li>
-                            <li>Deployed <strong>model serving on Kubernetes (EKS)</strong> with MLflow registry, cutting deployment time from 3 days to 4 hours with zero-downtime rolling updates. Set up monitoring via Prometheus, Grafana, and CloudWatch maintaining 99%+ uptime across 3 production models.</li>
-                            <li>Engineered <strong>RBAC and audit logging</strong> in Snowflake for model outputs handling PII and financial data, ensuring SOX and FINRA compliance with InfoSec.</li>
+                            <li>Owned the end-to-end building of a <strong>RAG-based document intelligence pipeline</strong> using LangChain, FAISS, and GPT-4 over 50K+ internal regulatory documents (BSA/AML guidelines, KYC procedures, audit standards). Compliance analysts went from spending 20 minutes per lookup to getting answers in under 90 seconds.</li>
+                            <li>Designed <strong>prompt chains with LangGraph</strong> for multi-step classification and summarization of loan agreements and audit reports. Improved classification precision by 28% over the prior keyword-matching approach through iterative prompt tuning and evaluation cycles.</li>
+                            <li>Contributed to the fraud analytics team by building <strong>feature engineering pipelines</strong> in Python, dbt, and Airflow on AWS/Snowflake, generating 60+ risk signals from raw transaction streams that fed the team's XGBoost-based anomaly detection models.</li>
+                            <li>Deployed <strong>model serving infrastructure on Kubernetes (EKS)</strong> with MLflow model registry for the compliance models I own. Brought deployment time down from 3 days to 4 hours with zero-downtime rolling updates.</li>
+                            <li>Set up <strong>model monitoring</strong> using Prometheus, Grafana, and CloudWatch to track inference latency, prediction drift, and accuracy trends across 3 compliance models. Enabled proactive retraining that kept uptime above 99%.</li>
+                            <li>Worked with InfoSec to engineer <strong>role-based access controls and audit logging</strong> in Snowflake for model outputs handling PII and financial data, ensuring SOX and FINRA compliance.</li>
                         </ul>
                         <div class="timeline-tags">
                             <span>Python</span><span>LangChain</span><span>LangGraph</span><span>FAISS</span><span>GPT-4</span><span>AWS</span><span>Snowflake</span><span>Kubernetes</span><span>MLflow</span><span>Prometheus</span>
@@ -354,10 +348,12 @@
                             <span class="timeline-date">Jan 2022 — Jan 2023</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Built <strong>patient readmission risk models</strong> using XGBoost on structured EHR data, improving early identification of high-risk patients by 15% over the prior rule-based approach for a hospital network client.</li>
-                            <li>Developed <strong>NLP pipelines with spaCy</strong> to extract medications and diagnosis entities from 10K+ physician discharge summaries, enriching downstream risk model features with unstructured clinical data.</li>
-                            <li>Implemented <strong>ARIMA and LSTM anomaly detection</strong> on patient vitals, enabling 6-to-12-hour early warning signals integrated into the clinical monitoring dashboard used by hospital administrators.</li>
-                            <li>Automated <strong>ML training and batch inference</strong> on AWS SageMaker, reducing experiment-to-production handoff from 2 weeks to 3 days. Deployed Dockerized endpoints on ECS with sub-200ms p99 latency.</li>
+                            <li>Built <strong>patient readmission risk models</strong> using XGBoost and Random Forest on structured EHR data, improving early identification of high-risk patients by 15% over the prior rule-based approach.</li>
+                            <li>Developed <strong>NLP pipelines with spaCy and regex</strong> to extract medications and diagnosis entities from physician discharge summaries, enriching downstream risk model features with unstructured clinical data.</li>
+                            <li>Implemented <strong>ARIMA- and LSTM-based anomaly detection</strong> on patient vitals, enabling 6-to-12-hour early warning signals for the clinical monitoring dashboard.</li>
+                            <li>Automated <strong>ML training and batch inference workflows</strong> on AWS SageMaker, reducing experiment-to-production handoff time from 2 weeks to 3 days.</li>
+                            <li>Built <strong>Tableau dashboards</strong> to track model accuracy, patient risk distribution, and readmission trends used in quarterly care quality reviews.</li>
+                            <li>Deployed <strong>Dockerized inference endpoints</strong> on AWS ECS with auto-scaling, maintaining sub-200ms p99 latency during peak seasonal demand.</li>
                         </ul>
                         <div class="timeline-tags">
                             <span>Python</span><span>XGBoost</span><span>spaCy</span><span>ARIMA</span><span>LSTM</span><span>AWS SageMaker</span><span>Docker</span><span>ECS</span>
@@ -376,9 +372,12 @@
                             <span class="timeline-date">Oct 2019 — Dec 2021</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Built <strong>ETL pipelines on Azure Data Factory</strong> processing 500K+ daily network event records. Engineered 120+ subscriber behavior features from CDR and CRM data feeding churn prediction and network quality ML models.</li>
-                            <li>Implemented <strong>Great Expectations data validation</strong> on telemetry feeds, catching 12% of upstream schema and drift issues before they impacted ML training pipelines.</li>
-                            <li>Automated deployment with <strong>Azure DevOps and Terraform</strong>, reducing deployment overhead by 50% across 3 environments. Migrated 2TB+ analytics data from Azure to AWS with zero data loss.</li>
+                            <li>Built <strong>ETL pipelines on Azure Data Factory and Azure SQL</strong> to process 500K+ daily network event records for analytics and machine learning use cases.</li>
+                            <li>Engineered <strong>120+ subscriber behavior features</strong> from CDR and CRM data, supporting churn prediction and network quality models used by downstream data science teams.</li>
+                            <li>Implemented <strong>Great Expectations-based data validation</strong> on network telemetry feeds, catching 12% of upstream schema and drift issues before they impacted ML training pipelines.</li>
+                            <li>Automated <strong>deployment and orchestration workflows</strong> with Azure DevOps and Terraform, reducing deployment overhead by 50% across 3 environments.</li>
+                            <li>Migrated 2TB+ of subscriber analytics data from Azure to AWS during platform consolidation, achieving zero data loss and less than 2 hours of downtime.</li>
+                            <li>Partnered with data scientists to <strong>define feature schemas, troubleshoot pipeline defects</strong>, and improve training data reliability for churn and anomaly detection workloads.</li>
                         </ul>
                         <div class="timeline-tags">
                             <span>Azure Data Factory</span><span>Python</span><span>SQL</span><span>Terraform</span><span>Great Expectations</span><span>Azure DevOps</span>
@@ -406,7 +405,7 @@
                         <div class="stack-item"><span class="stack-dot"></span>RAG Pipelines</div>
                         <div class="stack-item"><span class="stack-dot"></span>LangChain & LangGraph</div>
                         <div class="stack-item"><span class="stack-dot"></span>Prompt Engineering</div>
-                        <div class="stack-item"><span class="stack-dot"></span>LLM Evaluation & Fine-tuning</div>
+                        <div class="stack-item"><span class="stack-dot"></span>LLM Evaluation & Fine-tuning (LoRA/PEFT)</div>
                         <div class="stack-item"><span class="stack-dot"></span>Hugging Face Transformers</div>
                         <div class="stack-item"><span class="stack-dot"></span>FAISS, Pinecone, ChromaDB</div>
                         <div class="stack-item"><span class="stack-dot"></span>Semantic & Hybrid Retrieval</div>
@@ -421,7 +420,7 @@
                         <div class="stack-item"><span class="stack-dot"></span>PyTorch & TensorFlow</div>
                         <div class="stack-item"><span class="stack-dot"></span>Scikit-learn</div>
                         <div class="stack-item"><span class="stack-dot"></span>XGBoost & LightGBM</div>
-                        <div class="stack-item"><span class="stack-dot"></span>ARIMA & LSTM</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Time-series (ARIMA & LSTM)</div>
                         <div class="stack-item"><span class="stack-dot"></span>Feature Engineering</div>
                         <div class="stack-item"><span class="stack-dot"></span>A/B Testing</div>
                         <div class="stack-item"><span class="stack-dot"></span>MLflow</div>
@@ -447,13 +446,13 @@
                         <h3>Cloud & MLOps</h3>
                     </div>
                     <div class="stack-items">
-                        <div class="stack-item"><span class="stack-dot"></span>AWS (SageMaker, Bedrock, Lambda)</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Azure (Data Factory, Azure SQL)</div>
-                        <div class="stack-item"><span class="stack-dot"></span>GCP (Vertex AI)</div>
+                        <div class="stack-item"><span class="stack-dot"></span>AWS (SageMaker, Bedrock, S3, Lambda)</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Azure & GCP (Vertex AI)</div>
                         <div class="stack-item"><span class="stack-dot"></span>Docker & Kubernetes</div>
+                        <div class="stack-item"><span class="stack-dot"></span>ECS, EKS, Redshift</div>
                         <div class="stack-item"><span class="stack-dot"></span>Terraform</div>
                         <div class="stack-item"><span class="stack-dot"></span>GitHub Actions & CI/CD</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Prometheus & Grafana</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Prometheus, Grafana, CloudWatch</div>
                     </div>
                 </div>
                 <div class="stack-category reveal">
@@ -465,24 +464,23 @@
                         <div class="stack-item"><span class="stack-dot"></span>Python & SQL</div>
                         <div class="stack-item"><span class="stack-dot"></span>PySpark & Spark</div>
                         <div class="stack-item"><span class="stack-dot"></span>Airflow</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Snowflake & Redshift</div>
-                        <div class="stack-item"><span class="stack-dot"></span>dbt</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Snowflake & dbt</div>
                         <div class="stack-item"><span class="stack-dot"></span>Kafka</div>
                         <div class="stack-item"><span class="stack-dot"></span>Great Expectations</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Delta Lake</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Tableau & Power BI</div>
                     </div>
                 </div>
                 <div class="stack-category reveal">
                     <div class="stack-category-header">
-                        <span class="stack-icon">📊</span>
-                        <h3>Visualization & Tools</h3>
+                        <span class="stack-icon">🌐</span>
+                        <h3>Vector Databases / Retrieval</h3>
                     </div>
                     <div class="stack-items">
-                        <div class="stack-item"><span class="stack-dot"></span>Tableau</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Power BI</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Git & GitHub</div>
-                        <div class="stack-item"><span class="stack-dot"></span>JIRA & Confluence</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Jupyter & VS Code</div>
+                        <div class="stack-item"><span class="stack-dot"></span>FAISS</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Pinecone</div>
+                        <div class="stack-item"><span class="stack-dot"></span>ChromaDB</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Hybrid Retrieval</div>
+                        <div class="stack-item"><span class="stack-dot"></span>Cosine Similarity</div>
                     </div>
                 </div>
             </div>
@@ -528,7 +526,7 @@
                             class="github-card-link">↗</a>
                     </div>
                     <h3>JobMatch AI</h3>
-                    <p>Semantic job-resume matching engine using Google Vertex AI embeddings and Pinecone vector search with LangChain-based analysis chain and Streamlit frontend. Scores resume-to-JD similarity and surfaces top skill gaps.</p>
+                    <p>Semantic job-resume matching tool using Google Vertex AI embeddings (text-embedding-004) and Pinecone for vector search. Scores resume-to-JD similarity with cosine distance and surfaces top skill gaps. LangChain-based analysis chain generates tailored suggestions.</p>
                     <div class="github-card-tags">
                         <span>Python</span><span>Vertex AI</span><span>LangChain</span><span>Pinecone</span>
                     </div>
@@ -615,16 +613,19 @@
                 <div class="edu-card reveal">
                     <div class="edu-icon">🎓</div>
                     <h3>Master of Science</h3>
-                    <p class="edu-field">Cybersecurity (Data Analytics)</p>
+                    <p class="edu-field">Cybersecurity (Data Analytics Concentration)</p>
                     <p class="edu-school">Webster University, St. Louis, MO</p>
-                    <p class="edu-date">May 2025</p>
+                    <p class="edu-date">Jan 2023 - May 2025</p>
+                    <div class="edu-details" style="margin-top: 12px; font-size: 0.8rem; color: var(--text-tertiary);">
+                        <strong>Relevant:</strong> Machine Learning for Security Analytics, Statistical Modeling, NLP, Network Data Analysis
+                    </div>
                 </div>
                 <div class="edu-card reveal">
                     <div class="edu-icon">🎓</div>
                     <h3>Bachelor of Science</h3>
-                    <p class="edu-field">Electronics & Computer Science</p>
-                    <p class="edu-school">Geethanjali College of Eng & Tech, India</p>
-                    <p class="edu-date">2020</p>
+                    <p class="edu-field">Electronics and Computer Science</p>
+                    <p class="edu-school">Geethanjali College of Engineering and Technology</p>
+                    <p class="edu-date">July 2016 - May 2020</p>
                 </div>
             </div>
             <div class="cert-grid">
@@ -674,7 +675,7 @@
                         </svg>
                     </div>
                     <h4>IBM Generative AI</h4>
-                    <p>Foundation Models, AI Governance, NLP</p>
+                    <p>Foundation Models, Platforms, AI Governance, and NLP</p>
                 </div>
             </div>
         </div>
