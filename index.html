@@ -41,6 +41,7 @@
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#techstack" class="nav-link">Skills</a>
                 <a href="#philosophy" class="nav-link">Philosophy</a>
+                <button id="aiNavBtn" class="nav-link ai-nav-btn">Talk to my AI ✨</button>
                 <a href="#contact" class="nav-link cta-link">Contact</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -83,6 +84,9 @@
                 <a href="#contact" class="btn btn-ghost">
                     Get in Touch →
                 </a>
+                <button id="aiHeroBtn" class="btn btn-ai">
+                    Talk to my AI ✨
+                </button>
             </div>
             <div class="hero-metrics animate-in">
                 <div class="metric">
@@ -366,7 +370,7 @@
                     <div class="timeline-content">
                         <div class="timeline-header">
                             <div>
-                                <h3>Data Engineer</h3>
+                                <h3>Data Scientist</h3>
                                 <span class="company">Genpact</span>
                             </div>
                             <span class="timeline-date">Oct 2019 — Dec 2021</span>
@@ -779,7 +783,38 @@
         </div>
     </footer>
 
+    <!-- ===== AI CHAT MODAL ===== -->
+    <div id="aiChatModal" class="ai-modal-overlay hidden">
+        <div class="ai-modal">
+            <div class="ai-modal-header">
+                <div class="ai-profile">
+                    <div class="ai-avatar">HM</div>
+                    <div class="ai-info">
+                        <h3>Hariprasad's AI</h3>
+                        <span class="ai-status">Online</span>
+                    </div>
+                </div>
+                <button id="closeAiModal" class="ai-close-btn" aria-label="Close UI">&times;</button>
+            </div>
+            <div class="ai-modal-body" id="aiChatBody">
+                <div class="ai-message ai-message-incoming">
+                    <div class="msg-bubble">Hi there! 👋 I'm an AI assistant trained on Hariprasad's experience, projects, and skills. Ask me anything about his work!</div>
+                </div>
+            </div>
+            <div class="ai-modal-footer">
+                <form id="aiChatForm" class="ai-chat-form">
+                    <input type="text" id="aiChatInput" placeholder="Ask about 'LabelSentinel' or skills..." autocomplete="off" />
+                    <button type="submit" class="ai-send-btn" aria-label="Send Message">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
-
 </html>

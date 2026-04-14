@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initCardSpotlights();
     initCustomCursor();
+    initAiModal();
 });
 
 /* ---------- PARTICLE CANVAS ---------- */
@@ -406,3 +407,117 @@ function initCustomCursor() {
     }
     animateFollower();
 }
+
+/* ---------- AI CHAT MODAL ---------- */
+function initAiModal() {
+    const aiNavBtn = document.getElementById('aiNavBtn');
+    const aiHeroBtn = document.getElementById('aiHeroBtn');
+    const aiModalOverlay = document.getElementById('aiChatModal');
+    const closeBtn = document.getElementById('closeAiModal');
+    const chatForm = document.getElementById('aiChatForm');
+    const chatInput = document.getElementById('aiChatInput');
+    const chatBody = document.getElementById('aiChatBody');
+
+    if (!aiModalOverlay) return;
+
+    function openModal() {
+        aiModalOverlay.classList.remove('hidden');
+        setTimeout(() => chatInput.focus(), 100);
+    }
+
+    function closeModal() {
+        aiModalOverlay.classList.add('hidden');
+    }
+
+    if (aiNavBtn) aiNavBtn.addEventListener('click', openModal);
+    if (aiHeroBtn) aiHeroBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    
+    // Close on overlay click
+    aiModalOverlay.addEventListener('click', (e) => {
+        if (e.target === aiModalOverlay) {
+            closeModal();
+        }
+    });
+
+    // Handle Chat Submission
+    chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if (!msg) return;
+
+        // Add user message
+        appendMessage(msg, 'outgoing');
+        chatInput.value = '';
+
+        // Simulate AI thinking
+        showTypingIndicator();
+
+        setTimeout(() => {
+            removeTypingIndicator();
+            const response = generateMockResponse(msg);
+            appendMessage(response, 'incoming');
+        }, 1200 + Math.random() * 800); // 1.2s - 2s fake delay
+    });
+
+    function appendMessage(text, type) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `ai-message ai-message-${type}`;
+        msgDiv.innerHTML = `<div class="msg-bubble">${text}</div>`;
+        chatBody.appendChild(msgDiv);
+        scrollToBottom();
+    }
+
+    function showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = `ai-message ai-message-incoming typing-indicator-container`;
+        indicator.innerHTML = `
+            <div class="typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        `;
+        indicator.id = 'typingIndicator';
+        chatBody.appendChild(indicator);
+        scrollToBottom();
+    }
+
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+
+    function scrollToBottom() {
+        chatBody.scrollTo({
+            top: chatBody.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+
+    // A simple mock responder
+    function generateMockResponse(input) {
+        const lowerInput = input.toLowerCase();
+        
+        if (lowerInput.includes('hello') || lowerInput.includes('hi ') || lowerInput === 'hi') {
+            return "Hello! I'm ready to answer questions about Hariprasad's work. What would you like to know?";
+        }
+        if (lowerInput.includes('labelsentinel') || lowerInput.includes('project')) {
+            return "LabelSentinel is a patent-pending AI-powered food safety auditing system built for Meta's AR smart glasses. It uses a 3-tier multimodal orchestrator (ML Kit OCR -> Gemma 4B SLM -> Gemini 2.5 Pro) with extreme latency optimization ($0.004/call).";
+        }
+        if (lowerInput.includes('experience') || lowerInput.includes('work') || lowerInput.includes('job') || lowerInput.includes('bank of america')) {
+            return "Hariprasad is currently an AI/ML Engineer at Bank of America, building production RAG pipelines for regulatory documents and model serving infrastructure on Kubernetes.";
+        }
+        if (lowerInput.includes('skill') || lowerInput.includes('tech') || lowerInput.includes('stack') || lowerInput.includes('python')) {
+            return "He specializes in LLM engineering (RAG, LangChain, FAISS), cloud infra (AWS/Azure), and traditional ML. His core stack is Python, PyTorch, LangChain, and Kubernetes.";
+        }
+        if (lowerInput.includes('contact') || lowerInput.includes('email') || lowerInput.includes('hire') || lowerInput.includes('resume')) {
+            return "You can reach him at hariprasadmkl11@gmail.com! He's open to new opportunities.";
+        }
+        
+        return "That's an interesting question! While I'm a simple AI mock right now, Hariprasad would love to discuss this with you. Feel free to reach out to him directly via the contact section.";
+    }
+}
+
