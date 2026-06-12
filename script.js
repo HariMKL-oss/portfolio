@@ -1,11 +1,12 @@
-/* =========================================
+﻿/* =========================================
    HARIPRASAD MANCHIKATLA — PORTFOLIO JS
-   Particle background, scroll animations,
-   counter animation, rotating text, nav
+   Scroll animations, counter animation,
+   rotating text, nav, 3D tilt cards,
+   magnetic buttons, scroll progress
+   (3D WebGL background lives in three-scene.js)
    ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
-    initParticleCanvas();
     initScrollReveal();
     initNavbar();
     initMobileNav();
@@ -13,171 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     initRotatingText();
     initSmoothScroll();
     initCardSpotlights();
+    initTiltCards();
+    initMagneticButtons();
+    initScrollProgress();
+    initHeroParallax();
     initCustomCursor();
     initAiModal();
 });
-
-/* ---------- PARTICLE CANVAS ---------- */
-function initParticleCanvas() {
-    const canvas = document.getElementById('particleCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let animationId;
-    let mouse = { x: null, y: null };
-
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-    });
-    
-    // Clear mouse tracking if mouse leaves window
-    window.addEventListener('mouseout', () => {
-        mouse.x = null;
-        mouse.y = null;
-    });
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            // 3D feel: smaller particles move slower
-            this.z = Math.random() * 2 + 0.5;
-            this.vx = (Math.random() - 0.5) * (1 / this.z);
-            this.vy = (Math.random() - 0.5) * (1 / this.z);
-            this.radius = 1.5 / this.z;
-            this.opacity = (1 / this.z) * 0.6;
-            // Mixed colors between blue and purple
-            this.isPurple = Math.random() > 0.7;
-        }
-
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-
-            // Loop smoothly across edges
-            if (this.x < -10) this.x = canvas.width + 10;
-            if (this.x > canvas.width + 10) this.x = -10;
-            if (this.y < -10) this.y = canvas.height + 10;
-            if (this.y > canvas.height + 10) this.y = -10;
-
-            // Fluid Mouse interaction
-            if (mouse.x !== null) {
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 200) {
-                    const force = (200 - dist) / 200;
-                    this.vx -= (dx / dist) * force * 0.03 * (1 / this.z);
-                    this.vy -= (dy / dist) * force * 0.03 * (1 / this.z);
-                    
-                    // Connect particle to mouse with bright line
-                    if (this.z < 2) {
-                        ctx.beginPath();
-                        ctx.moveTo(this.x, this.y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.strokeStyle = `rgba(59, 130, 246, ${force * 0.2})`;
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            // Return to base velocity gently
-            this.vx = this.vx * 0.98 + ((Math.random() - 0.5) * 0.01);
-            this.vy = this.vy * 0.98 + ((Math.random() - 0.5) * 0.01);
-            
-            // Limit speed
-            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-            if (speed > 2) {
-                this.vx = (this.vx / speed) * 2;
-                this.vy = (this.vy / speed) * 2;
-            }
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = this.isPurple 
-                ? `rgba(139, 92, 246, ${this.opacity})` 
-                : `rgba(59, 130, 246, ${this.opacity})`;
-            ctx.fill();
-        }
-    }
-
-    // Create particles - fewer particles for luxury feel, but more impactful connections
-    const particleCount = Math.min(100, Math.floor((canvas.width * canvas.height) / 10000));
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
-
-    function drawConnections() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                // Don't connect particles on vastly different Z planes
-                if (Math.abs(particles[i].z - particles[j].z) > 1.5) continue;
-
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < 180) {
-                    const opacity = (1 - dist / 180) * 0.25;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    
-                    // Create gradient line between particles
-                    const grad = ctx.createLinearGradient(particles[i].x, particles[i].y, particles[j].x, particles[j].y);
-                    const color1 = particles[i].isPurple ? `139, 92, 246` : `59, 130, 246`;
-                    const color2 = particles[j].isPurple ? `139, 92, 246` : `59, 130, 246`;
-                    
-                    grad.addColorStop(0, `rgba(${color1}, ${opacity})`);
-                    grad.addColorStop(1, `rgba(${color2}, ${opacity})`);
-                    
-                    ctx.strokeStyle = grad;
-                    ctx.lineWidth = 1 / particles[i].z;
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Use composite operation for glowing overlapping links
-        ctx.globalCompositeOperation = 'screen';
-        
-        drawConnections();
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
-        
-        ctx.globalCompositeOperation = 'source-over';
-        animationId = requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // Pause when tab is hidden
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            cancelAnimationFrame(animationId);
-        } else {
-            animate();
-        }
-    });
-}
 
 /* ---------- SCROLL REVEAL ---------- */
 function initScrollReveal() {
@@ -370,6 +213,109 @@ function initCardSpotlights() {
             card.style.setProperty('--mouse-y', `${y}px`);
         });
     });
+}
+
+/* ---------- 3D TILT CARDS ---------- */
+function initTiltCards() {
+    // Skip on touch devices and for users who prefer reduced motion
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cards = document.querySelectorAll(
+        '.about-card, .case-card, .innovation-card, .github-card, .philosophy-card, .edu-card, .cert-card, .arch-tier'
+    );
+
+    const MAX_TILT = 7; // degrees
+
+    cards.forEach(card => {
+        card.classList.add('tilt-card');
+        let rafId = null;
+
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'transform 0.08s linear';
+        });
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width - 0.5;
+            const py = (e.clientY - rect.top) / rect.height - 0.5;
+
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                card.style.transform =
+                    `perspective(900px) rotateX(${(-py * MAX_TILT).toFixed(2)}deg) rotateY(${(px * MAX_TILT).toFixed(2)}deg) translateZ(8px)`;
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+            card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+        });
+    });
+}
+
+/* ---------- MAGNETIC BUTTONS ---------- */
+function initMagneticButtons() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+}
+
+/* ---------- SCROLL PROGRESS BAR ---------- */
+function initScrollProgress() {
+    const bar = document.getElementById('scrollProgress');
+    if (!bar) return;
+
+    let ticking = false;
+    function update() {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = max > 0 ? window.scrollY / max : 0;
+        bar.style.transform = `scaleX(${progress})`;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+        }
+    }, { passive: true });
+    update();
+}
+
+/* ---------- HERO PARALLAX ---------- */
+function initHeroParallax() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const heroContent = document.querySelector('.hero-content');
+    if (!heroContent) return;
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            const y = window.scrollY;
+            const limit = window.innerHeight;
+            if (y < limit) {
+                heroContent.style.transform = `translateY(${y * 0.25}px)`;
+                heroContent.style.opacity = `${1 - (y / limit) * 1.1}`;
+            }
+            ticking = false;
+        });
+    }, { passive: true });
 }
 
 /* ---------- CUSTOM CURSOR ---------- */

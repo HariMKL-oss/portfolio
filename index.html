@@ -24,8 +24,11 @@
 </head>
 
 <body>
-    <!-- Particle Canvas Background -->
-    <canvas id="particleCanvas"></canvas>
+    <!-- 3D WebGL Background -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress"></div>
 
     <!-- Navigation -->
     <nav id="navbar">
@@ -815,6 +818,14 @@
         </div>
     </div>
 
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        }
+    }
+    </script>
+    <script type="module" src="three-scene.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
