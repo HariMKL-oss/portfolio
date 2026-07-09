@@ -67,7 +67,7 @@
                 <span class="hero-line">that ship to production.</span>
             </h1>
             <p class="hero-subtitle animate-in">
-                AI/ML Engineer with 5+ years of experience building production ML, GenAI, and data systems across banking, healthcare, and telecom. Currently at Bank of America, developing document intelligence and compliance analytics solutions using RAG, NLP, and LLM workflows for risk and compliance teams. Hands-on experience with Python, AWS, LangChain, vector databases, model deployment, and MLOps for enterprise-scale applications. Proven track record of improving search, classification, monitoring, and operational efficiency in regulated environments.
+                AI/ML Engineer and Data Scientist with 5+ years of experience building and shipping production Machine Learning, Deep Learning, and Generative AI systems across banking, healthcare, and telecom on AWS and Microsoft Azure. Currently at Fifth Third Bank, building LLM fine-tuning, RAG, and multi-agent orchestration systems, alongside predictive modeling and MLOps. Proven track record of delivering efficiency gains in regulated, compliance-heavy environments under Responsible AI governance.
             </p>
             <div class="hero-buttons animate-in">
                 <a href="#project" class="btn btn-primary">
@@ -326,17 +326,17 @@
                         <div class="timeline-header">
                             <div>
                                 <h3>AI / ML Engineer</h3>
-                                <span class="company">Bank of America</span>
+                                <span class="company">Fifth Third Bank</span>
                             </div>
                             <span class="timeline-date">Mar 2024 — Present</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Owned the end-to-end building of a <strong>RAG-based document intelligence pipeline</strong> using LangChain, FAISS, and GPT-4 over 50K+ internal regulatory documents (BSA/AML guidelines, KYC procedures, audit standards). Compliance analysts went from spending 20 minutes per lookup to getting answers in under 90 seconds.</li>
-                            <li>Designed <strong>prompt chains with LangGraph</strong> for multi-step classification and summarization of loan agreements and audit reports. Improved classification precision by 28% over the prior keyword-matching approach through iterative prompt tuning and evaluation cycles.</li>
-                            <li>Contributed to the fraud analytics team by building <strong>feature engineering pipelines</strong> in Python, dbt, and Airflow on AWS/Snowflake, generating 60+ risk signals from raw transaction streams that fed the team's XGBoost-based anomaly detection models.</li>
-                            <li>Deployed <strong>model serving infrastructure on Kubernetes (EKS)</strong> with MLflow model registry for the compliance models I own. Brought deployment time down from 3 days to 4 hours with zero-downtime rolling updates.</li>
-                            <li>Set up <strong>model monitoring</strong> using Prometheus, Grafana, and CloudWatch to track inference latency, prediction drift, and accuracy trends across 3 compliance models. Enabled proactive retraining that kept uptime above 99%.</li>
-                            <li>Worked with InfoSec to engineer <strong>role-based access controls and audit logging</strong> in Snowflake for model outputs handling PII and financial data, ensuring SOX and FINRA compliance.</li>
+                            <li>Designed and built a production RAG pipeline on <strong>Azure OpenAI Service (GPT-4) with Azure AI Search</strong> (hybrid semantic + vector) and LangChain over 50K+ regulatory documents with cross-encoder re-ranking and source attribution, cutting compliance lookup time 93% (20 min to 90 sec).</li>
+                            <li>Orchestrated <strong>multi-agent agentic workflows</strong> with LangGraph + Semantic Kernel, deploying sub-agents for document classification, NLP summarization, and clause extraction on loan agreements, lifting extraction precision 28%.</li>
+                            <li>Fine-tuned domain embedding and LLM adapters with <strong>LoRA/QLoRA (PEFT) on PyTorch</strong>, improving retrieval relevance and reducing hallucinations on compliance queries by 22%.</li>
+                            <li>Developed real-time AML transaction risk scoring with <strong>XGBoost on 60+ hand-crafted signals in AWS Snowflake</strong>, autonomously flagging 2,400+ suspicious transactions/month at 92% precision.</li>
+                            <li>Launched an internal ML deployment platform on <strong>Amazon EKS and AWS Bedrock</strong> with MLflow Model Registry, canary rollouts, and zero-downtime updates, compressing deployment cycles 3 days to 4 hours.</li>
+                            <li>Automated retraining with <strong>Prometheus/Grafana and Azure Monitor drift detection</strong> plus Evidently AI bias auditing across 3 live compliance models at 99%+ accuracy; enforced RBAC, PII masking, and audit logging for SOX/FINRA certification.</li>
                         </ul>
                         <div class="timeline-tags">
                             <span>Python</span><span>LangChain</span><span>LangGraph</span><span>FAISS</span><span>GPT-4</span><span>AWS</span><span>Snowflake</span><span>Kubernetes</span><span>MLflow</span><span>Prometheus</span>
@@ -355,12 +355,11 @@
                             <span class="timeline-date">Jan 2022 — Jan 2023</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Built <strong>patient readmission risk models</strong> using XGBoost and Random Forest on structured EHR data, improving early identification of high-risk patients by 15% over the prior rule-based approach.</li>
-                            <li>Developed <strong>NLP pipelines with spaCy and regex</strong> to extract medications and diagnosis entities from physician discharge summaries, enriching downstream risk model features with unstructured clinical data.</li>
-                            <li>Implemented <strong>ARIMA- and LSTM-based anomaly detection</strong> on patient vitals, enabling 6-to-12-hour early warning signals for the clinical monitoring dashboard.</li>
-                            <li>Automated <strong>ML training and batch inference workflows</strong> on AWS SageMaker, reducing experiment-to-production handoff time from 2 weeks to 3 days.</li>
-                            <li>Built <strong>Tableau dashboards</strong> to track model accuracy, patient risk distribution, and readmission trends used in quarterly care quality reviews.</li>
-                            <li>Deployed <strong>Dockerized inference endpoints</strong> on AWS ECS with auto-scaling, maintaining sub-200ms p99 latency during peak seasonal demand.</li>
+                            <li>Developed <strong>patient readmission risk models</strong> using XGBoost + Random Forest on 200K+ EHR records with SHAP explainability, raising high-risk patient recall 15% for a top 5 U.S. hospital network.</li>
+                            <li>Constructed a <strong>clinical NLP pipeline</strong> with spaCy NER and BERT-based clinical embeddings across 50K+ discharge summaries, boosting downstream model F1 12%.</li>
+                            <li>Deployed <strong>hybrid anomaly detection</strong> combining ARIMA + LSTM with FP16 mixed-precision training on ICU vitals, generating 6-to-12 hour early warnings at a 4% false-positive rate.</li>
+                            <li>Migrated 8 ML workflows to <strong>AWS SageMaker Pipelines</strong> with versioned datasets and automated hyperparameter optimization (HPO), compressing experiment-to-production 14 days to 3 days.</li>
+                            <li>Containerized <strong>inference REST endpoints with Docker on AWS ECS</strong> and Application Auto Scaling, sustaining sub-200ms p99 latency at 3× peak load.</li>
                         </ul>
                         <div class="timeline-tags">
                             <span>Python</span><span>XGBoost</span><span>spaCy</span><span>ARIMA</span><span>LSTM</span><span>AWS SageMaker</span><span>Docker</span><span>ECS</span>
@@ -379,12 +378,11 @@
                             <span class="timeline-date">Oct 2019 — Dec 2021</span>
                         </div>
                         <ul class="timeline-bullets">
-                            <li>Built <strong>ETL pipelines on Azure Data Factory and Azure SQL</strong> to process 500K+ daily network event records for analytics and machine learning use cases.</li>
-                            <li>Engineered <strong>120+ subscriber behavior features</strong> from CDR and CRM data, supporting churn prediction and network quality models used by downstream data science teams.</li>
-                            <li>Implemented <strong>Great Expectations-based data validation</strong> on network telemetry feeds, catching 12% of upstream schema and drift issues before they impacted ML training pipelines.</li>
-                            <li>Automated <strong>deployment and orchestration workflows</strong> with Azure DevOps and Terraform, reducing deployment overhead by 50% across 3 environments.</li>
-                            <li>Migrated 2TB+ of subscriber analytics data from Azure to AWS during platform consolidation, achieving zero data loss and less than 2 hours of downtime.</li>
-                            <li>Partnered with data scientists to <strong>define feature schemas, troubleshoot pipeline defects</strong>, and improve training data reliability for churn and anomaly detection workloads.</li>
+                            <li>Engineered <strong>120+ behavioral features</strong> from AT&T CDR and CRM data using PySpark and dbt on 500K+ daily subscriber records, with Great Expectations validation safeguarding input integrity, lifting retention model recall 18%.</li>
+                            <li>Deployed a <strong>gradient-boosted churn model</strong> at 87% AUC on 500K+ subscribers via Azure ML batch scoring, feeding regional CRM retention workflows.</li>
+                            <li>Segmented the subscriber base into churn-risk tiers using <strong>K-means clustering and SHAP feature attribution</strong>, focusing retention offers on the top 15% highest-risk, highest-value accounts.</li>
+                            <li>Designed <strong>A/B tests</strong> measuring retention-campaign lift across subscriber cohorts, validating model-driven targeting that drove a measurable quarterly reduction in voluntary churn.</li>
+                            <li>Delivered <strong>Power BI dashboards on Azure Synapse</strong> surfacing churn-risk segments and revenue-at-risk to 4+ regional retention teams, replacing manual reporting in weekly campaign reviews.</li>
                         </ul>
                         <div class="timeline-tags">
                             <span>Azure Data Factory</span><span>Python</span><span>SQL</span><span>Terraform</span><span>Great Expectations</span><span>Azure DevOps</span>
@@ -633,8 +631,8 @@
                 <div class="edu-card reveal">
                     <div class="edu-icon">🎓</div>
                     <h3>Bachelor of Science</h3>
-                    <p class="edu-field">Electronics and Computer Science</p>
-                    <p class="edu-school">Geethanjali College of Engineering and Technology</p>
+                    <p class="edu-field">Computer Science</p>
+                    <p class="edu-school">Geethanjali College of Engineering & Technology, Hyderabad, India</p>
                     <p class="edu-date">July 2016 - May 2020</p>
                 </div>
             </div>
