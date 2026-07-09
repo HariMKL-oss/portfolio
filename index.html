@@ -40,11 +40,10 @@
             </a>
             <div class="nav-links" id="navLinks">
                 <a href="#about" class="nav-link">About</a>
-                <a href="#project" class="nav-link">Projects</a>
+                <a href="#projects" class="nav-link">Projects</a>
                 <a href="#experience" class="nav-link">Experience</a>
                 <a href="#techstack" class="nav-link">Skills</a>
                 <a href="#philosophy" class="nav-link">Philosophy</a>
-                <button id="aiNavBtn" class="nav-link ai-nav-btn">Talk to my AI ✨</button>
                 <a href="#contact" class="nav-link cta-link">Contact</a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -70,7 +69,7 @@
                 AI/ML Engineer and Data Scientist with 5+ years of experience building and shipping production Machine Learning, Deep Learning, and Generative AI systems across banking, healthcare, and telecom on AWS and Microsoft Azure. Currently at Fifth Third Bank, building LLM fine-tuning, RAG, and multi-agent orchestration systems, alongside predictive modeling and MLOps. Proven track record of delivering efficiency gains in regulated, compliance-heavy environments under Responsible AI governance.
             </p>
             <div class="hero-buttons animate-in">
-                <a href="#project" class="btn btn-primary">
+                <a href="#projects" class="btn btn-primary">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
                         <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
@@ -87,9 +86,6 @@
                 <a href="#contact" class="btn btn-ghost">
                     Get in Touch →
                 </a>
-                <button id="aiHeroBtn" class="btn btn-ai">
-                    Talk to my AI ✨
-                </button>
             </div>
             <div class="hero-metrics animate-in">
                 <div class="metric">
@@ -167,159 +163,17 @@
         </div>
     </section>
 
-    <!-- ===== FEATURED PROJECT: LabelSentinel ===== -->
-    <section id="project" class="section section-dark">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">02 — Featured Project</span>
-                <h2 class="section-title">LabelSentinel</h2>
-                <p class="section-subtitle">Automated Nutritional Intelligence Platform</p>
-            </div>
 
-            <div class="project-hero reveal">
-                <div class="project-badges">
-                    <span class="project-badge badge-live">🚀 Live Demo</span>
-                    <span class="project-badge badge-patent">📋 Patent Pending</span>
-                    <span class="project-badge badge-ar">🕶️ AR-Ready</span>
-                </div>
-                <p class="project-tagline">
-                    An AI-powered food safety auditing system designed for Meta's AR smart glasses.
-                    The user looks at a product and says <em>"Scan this"</em> — the AI reads the ingredient label
-                    and projects a verdict directly into their field of view.
-                </p>
-                <div class="project-links">
-                    <a href="https://stitch.withgoogle.com/preview/14176056805348093588?node-id=f30967385a3f43b0b34308a9d74e4bb1" target="_blank" class="btn btn-primary">Live Demo ↗</a>
-                    <a href="https://github.com/HariMKL-oss/LabelSentinel" target="_blank" class="btn btn-secondary">GitHub
-                        ↗</a>
-                </div>
-            </div>
-
-            <!-- Case Study Grid -->
-            <div class="case-study-grid">
-                <div class="case-card reveal">
-                    <div class="case-card-header">
-                        <span class="case-icon">🔴</span>
-                        <h3>Problem</h3>
-                    </div>
-                    <p>
-                        Consumers spend 3-5 minutes per product deciphering dense ingredient labels.
-                        80% of packaged foods contain hidden inflammatory oils, synthetic additives,
-                        or misleading "natural" labels. There's no instant, hands-free way to audit food safety.
-                    </p>
-                </div>
-                <div class="case-card reveal">
-                    <div class="case-card-header">
-                        <span class="case-icon">🟢</span>
-                        <h3>Solution</h3>
-                    </div>
-                    <p>
-                        A multimodal LLM orchestration layer integrating Gemini 2.5 Pro, GPT-4o, and on-device SLMs (Llama 3.2 3B, Gemma 3 4B) with automatic tier escalation based on OCR confidence thresholds. Real-time OCR + NLP pipeline using ML Kit Text Recognition V2 for ingredient label extraction gets >90% per-word accuracy.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Architecture Diagram -->
-            <div class="architecture-section reveal">
-                <h3 class="arch-title">Three-Tier Inference Architecture</h3>
-                <div class="arch-diagram">
-                    <div class="arch-tier tier-1">
-                        <div class="tier-header">
-                            <span class="tier-badge tier-badge-green">Tier 1</span>
-                            <span class="tier-latency">&lt; 500ms</span>
-                        </div>
-                        <h4>On-Device Fast Path</h4>
-                        <div class="tier-techs">
-                            <span>ML Kit OCR V2</span>
-                            <span>Keyword Matcher</span>
-                            <span>Barcode Scanner (UPC/EAN)</span>
-                        </div>
-                        <p class="tier-note">Handles ~70% of products — zero network calls, offline capability</p>
-                        <div class="tier-arrow">↓</div>
-                    </div>
-                    <div class="arch-tier tier-2">
-                        <div class="tier-header">
-                            <span class="tier-badge tier-badge-yellow">Tier 2</span>
-                            <span class="tier-latency">1–3s</span>
-                        </div>
-                        <h4>On-Device SLM Reasoning</h4>
-                        <div class="tier-techs">
-                            <span>Gemma 3 4B</span>
-                            <span>Llama 3.2 3B</span>
-                        </div>
-                        <p class="tier-note">Resolves ambiguity without cloud dependency based on confidence thresholds</p>
-                        <div class="tier-arrow">↓</div>
-                    </div>
-                    <div class="arch-tier tier-3">
-                        <div class="tier-header">
-                            <span class="tier-badge tier-badge-red">Tier 3</span>
-                            <span class="tier-latency">2–5s</span>
-                        </div>
-                        <h4>Cloud LLM Deep Analysis</h4>
-                        <div class="tier-techs">
-                            <span>Gemini 2.5 Pro</span>
-                            <span>GPT-4o</span>
-                        </div>
-                        <p class="tier-note">Complex labels. Optimized for latency (&lt;1.5s) and cost ($0.004/call).</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Key Innovations -->
-            <div class="innovations-grid">
-                <div class="innovation-card reveal">
-                    <div class="innovation-number">01</div>
-                    <h4>Multimodal AI Orchestration</h4>
-                    <p>Seamless routing between OCR, SLMs, and cloud LLMs based on confidence scores and input
-                        complexity.</p>
-                </div>
-                <div class="innovation-card reveal">
-                    <div class="innovation-number">02</div>
-                    <h4>OCR + NLP Pipeline</h4>
-                    <p>Real-time pipeline using ML Kit Text Recognition V2 achieving >90% per-word accuracy across a 3M+ product database.</p>
-                </div>
-                <div class="innovation-card reveal">
-                    <div class="innovation-number">03</div>
-                    <h4>Automatic Tier Escalation</h4>
-                    <p>Three-tier architecture prioritizes speed and offline function, escalating to on-device SLMs or cloud LLMs only when OCR confidence is low.</p>
-                </div>
-                <div class="innovation-card reveal">
-                    <div class="innovation-number">04</div>
-                    <h4>Latency & Cost Optimization</h4>
-                    <p>Adaptive inference pipeline resolves 70%+ of queries on-device, keeping average latency under 1.5s and overall cost to an incredibly efficient $0.004/call.</p>
-                </div>
-            </div>
-
-            <!-- Performance Metrics -->
-            <div class="metrics-bar reveal">
-                <div class="perf-metric">
-                    <span class="perf-value">&lt;1.5s</span>
-                    <span class="perf-label">Avg Cloud Latency</span>
-                </div>
-                <div class="perf-metric">
-                    <span class="perf-value">&gt;90%</span>
-                    <span class="perf-label">Per-word OCR Accuracy</span>
-                </div>
-                <div class="perf-metric">
-                    <span class="perf-value">70%</span>
-                    <span class="perf-label">Offline Coverage</span>
-                </div>
-                <div class="perf-metric">
-                    <span class="perf-value">$0.004</span>
-                    <span class="perf-label">Avg Cost / Call</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ===== EXPERIENCE SECTION ===== -->
     <section id="experience" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">03 — Experience</span>
+                <span class="section-tag">02 — Experience</span>
                 <h2 class="section-title">Building AI at <span class="gradient-text">enterprise scale.</span></h2>
             </div>
             <div class="timeline">
-                <!-- Bank of America -->
+                <!-- Fifth Third Bank -->
                 <div class="timeline-item reveal">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
@@ -397,7 +251,7 @@
     <section id="techstack" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">04 — Tech Stack</span>
+                <span class="section-tag">03 — Tech Stack</span>
                 <h2 class="section-title">Tools of the <span class="gradient-text">trade.</span></h2>
             </div>
             <div class="stack-grid">
@@ -492,11 +346,11 @@
         </div>
     </section>
 
-    <!-- ===== GITHUB PROJECTS SECTION ===== -->
-    <section id="github" class="section">
+    <!-- ===== PROJECTS SECTION ===== -->
+    <section id="projects" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">05 — GitHub</span>
+                <span class="section-tag">04 — Projects</span>
                 <h2 class="section-title">Open source & <span class="gradient-text">side projects.</span></h2>
             </div>
             <div class="github-grid">
@@ -543,6 +397,26 @@
                         <a href="https://HariMKL-oss.github.io/FinDocsAI/" target="_blank" style="color: var(--accent-color); font-size: 0.85rem; font-weight: 500; text-decoration: none;">🚀 Live Demo ↗</a>
                     </div>
                 </div>
+                <div class="github-card reveal">
+                    <div class="github-card-header">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg>
+                        <a href="https://github.com/HariMKL-oss/Skillsmith" target="_blank"
+                            class="github-card-link">↗</a>
+                    </div>
+                    <h3>Skillsmith</h3>
+                    <p>Open-source meta-skill framework that programmatically generates, structures, and validates new Claude agent skills, automating MCP/tool integration and evaluation scaffolding.</p>
+                    <div class="github-card-tags">
+                        <span>Python</span><span>Agentic AI</span><span>MCP</span><span>Automation</span>
+                    </div>
+                    <div class="github-card-meta">
+                        <span class="gh-lang"><span class="gh-dot" style="background:#3572A5"></span>Python</span>
+                        <span>🔧 Active</span>
+                    </div>
+                </div>
                 <div class="github-card github-card-cta reveal">
                     <div class="github-cta-content">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
@@ -563,7 +437,7 @@
     <section id="philosophy" class="section section-dark">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">06 — Philosophy</span>
+                <span class="section-tag">05 — Philosophy</span>
                 <h2 class="section-title">How I think about <span class="gradient-text">AI engineering.</span></h2>
             </div>
             <div class="philosophy-grid">
@@ -614,7 +488,7 @@
     <section id="education" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">07 — Education & Certifications</span>
+                <span class="section-tag">06 — Education & Certifications</span>
                 <h2 class="section-title">Academic <span class="gradient-text">foundation.</span></h2>
             </div>
             <div class="edu-grid">
@@ -693,7 +567,7 @@
     <section id="contact" class="section section-dark">
         <div class="container">
             <div class="contact-content">
-                <span class="section-tag">08 — Contact</span>
+                <span class="section-tag">07 — Contact</span>
                 <h2 class="contact-title">Let's build<br /><span class="gradient-text">intelligent systems.</span></h2>
                 <p class="contact-subtitle">
                     I'm currently open to new opportunities in AI/ML engineering.
@@ -759,7 +633,7 @@
                         </div>
                         <div>
                             <span class="contact-label">Location</span>
-                            <span class="contact-value">Chicago, IL</span>
+                            <span class="contact-value">Dallas, TX</span>
                         </div>
                     </div>
                 </div>
@@ -784,37 +658,7 @@
         </div>
     </footer>
 
-    <!-- ===== AI CHAT MODAL ===== -->
-    <div id="aiChatModal" class="ai-modal-overlay hidden">
-        <div class="ai-modal">
-            <div class="ai-modal-header">
-                <div class="ai-profile">
-                    <div class="ai-avatar">HM</div>
-                    <div class="ai-info">
-                        <h3>Hariprasad's AI</h3>
-                        <span class="ai-status">Online</span>
-                    </div>
-                </div>
-                <button id="closeAiModal" class="ai-close-btn" aria-label="Close UI">&times;</button>
-            </div>
-            <div class="ai-modal-body" id="aiChatBody">
-                <div class="ai-message ai-message-incoming">
-                    <div class="msg-bubble">Hi there! 👋 I'm an AI assistant trained on Hariprasad's experience, projects, and skills. Ask me anything about his work!</div>
-                </div>
-            </div>
-            <div class="ai-modal-footer">
-                <form id="aiChatForm" class="ai-chat-form">
-                    <input type="text" id="aiChatInput" placeholder="Ask about 'LabelSentinel' or skills..." autocomplete="off" />
-                    <button type="submit" class="ai-send-btn" aria-label="Send Message">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+
 
     <script type="importmap">
     {
