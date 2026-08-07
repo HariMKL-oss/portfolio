@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Interview Copilot",
+    "slug": "interview-copilot",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0B0F1A"
+    },
+    "android": {
+      "permissions": [
+        "RECORD_AUDIO"
+      ],
+      "package": "com.interviewcopilot.app"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.interviewcopilot.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Interview Copilot needs microphone access to listen to interview questions on speakerphone."
+      }
+    },
+    "plugins": [
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow Interview Copilot to access the microphone for interview questions."
+        }
+      ],
+      "expo-secure-store"
+    ]
+  }
+}
