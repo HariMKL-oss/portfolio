@@ -4,342 +4,282 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hariprasad Manchikatla — AI/ML Engineer</title>
+    <title>Hariprasad Manchikatla — AI Engineer | Generative AI & Production ML</title>
     <meta name="description"
-        content="Portfolio of Hariprasad Manchikatla — AI/ML Engineer specializing in LLM systems, production ML pipelines, and intelligent AI infrastructure." />
+        content="Portfolio of Hariprasad Manchikatla — AI Engineer specializing in production Generative AI, RAG platforms, multi-agent orchestration, and enterprise MLOps on AWS & Azure." />
     <meta name="keywords"
-        content="AI Engineer, ML Engineer, LLM, Machine Learning, Hariprasad Manchikatla, Portfolio" />
+        content="Hariprasad Manchikatla, AI Engineer, Machine Learning Engineer, Generative AI, LLM, RAG, LangGraph, Python, AWS, Azure" />
     <meta name="author" content="Hariprasad Manchikatla" />
-    <meta property="og:title" content="Hariprasad Manchikatla — AI/ML Engineer" />
-    <meta property="og:description" content="Building intelligent systems that ship to production." />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Hariprasad Manchikatla — AI Engineer" />
+    <meta property="og:description" content="Building production Generative AI & Agentic systems that scale." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hariprasad-manchikatla.vercel.app/" />
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
+
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 </head>
 
 <body>
-    <!-- 3D WebGL Background -->
-    <canvas id="webgl-canvas"></canvas>
 
-    <!-- Scroll Progress Bar -->
-    <div id="scrollProgress"></div>
+    <!-- Header Navigation -->
+    <header>
+        <div class="wrap">
+            <nav>
+                <a href="#hero" class="logo">
+                    <span class="logo-symbol">HM</span>
+                    <span>Hariprasad M.</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="#about">About</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#education">Education</a>
+                    <a href="#contact">Contact</a>
+                </div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">
-                <span class="logo-bracket">{</span>
-                <span class="logo-text">HM</span>
-                <span class="logo-bracket">}</span>
-            </a>
-            <div class="nav-links" id="navLinks">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#techstack" class="nav-link">Skills</a>
-                <a href="#philosophy" class="nav-link">Philosophy</a>
-                <a href="#contact" class="nav-link cta-link">Contact</a>
-            </div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span><span></span><span></span>
-            </button>
+                <div class="nav-actions">
+                    <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle Light/Dark Theme">
+                        <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+
+                    <a href="https://github.com/HariMKL-oss" target="_blank" class="icon-btn" aria-label="GitHub" title="GitHub Profile">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/hariprasadmanchikatla/" target="_blank" class="icon-btn" aria-label="LinkedIn" title="LinkedIn Profile">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+
+                    <button class="nav-burger" id="navBurger" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
         </div>
-    </nav>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#about" class="mob-link">About</a>
+            <a href="#experience" class="mob-link">Experience</a>
+            <a href="#projects" class="mob-link">Projects</a>
+            <a href="#skills" class="mob-link">Skills</a>
+            <a href="#education" class="mob-link">Education</a>
+            <a href="#contact" class="mob-link">Contact</a>
+        </div>
+    </header>
 
     <!-- ===== HERO SECTION ===== -->
-    <section id="hero">
-        <div class="hero-content">
-            <div class="hero-badge animate-in">
-                <span class="badge-dot"></span>
-                Open to Opportunities
+    <section id="hero" class="hero">
+        <div class="wrap">
+            <div class="hero-pill reveal">
+                <span class="dot"></span>
+                <span>Available for AI/ML Engineering Roles • Dallas, TX</span>
             </div>
-            <h2 class="hero-name animate-in">Hariprasad Manchikatla</h2>
-            <h1 class="hero-title animate-in">
-                <span class="hero-line">I build</span>
-                <span class="hero-line gradient-text" id="rotatingText">AI systems</span>
-                <span class="hero-line">that ship to production.</span>
+
+            <h1 class="hero-headline reveal">
+                Building production <span class="accent-text">AI & Agentic Systems</span> that scale.
             </h1>
-            <p class="hero-subtitle animate-in">
-                AI Engineer with 5+ years of experience building production Generative AI and machine learning systems in Python across AWS and Azure. Delivered enterprise RAG, agentic document intelligence, AML risk scoring, and MLOps solutions across regulated banking, healthcare, and telecom environments. Experienced in LLM fine-tuning, retrieval evaluation, model deployment, monitoring, and responsible AI governance. Proven ability to translate complex business requirements into scalable, secure, and measurable AI products.
+
+            <p class="hero-desc reveal">
+                AI Engineer with <strong>5+ years of experience</strong> building production Generative AI and machine learning systems in Python across AWS and Azure. Currently delivering enterprise RAG platforms, multi-agent document intelligence, and low-latency MLOps infrastructure in regulated environments.
             </p>
-            <div class="hero-buttons animate-in">
+
+            <div class="hero-actions reveal">
                 <a href="#projects" class="btn btn-primary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                    <span>View Projects</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M7 17l9.2-9.2M17 17V7H7"/>
                     </svg>
-                    View Projects
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <span>Get in Touch</span>
                 </a>
                 <a href="https://github.com/HariMKL-oss" target="_blank" class="btn btn-secondary">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    <span>GitHub</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                     </svg>
-                    GitHub
-                </a>
-                <a href="#contact" class="btn btn-ghost">
-                    Get in Touch →
                 </a>
             </div>
-            <div class="hero-metrics animate-in">
-                <div class="metric">
-                    <span class="metric-value" data-count="5">0</span><span class="metric-suffix">+</span>
-                    <span class="metric-label">Years Experience</span>
-                </div>
-                <div class="metric-divider"></div>
-                <div class="metric">
-                    <span class="metric-value" data-count="3">0</span>
-                    <span class="metric-label">Enterprise Clients</span>
-                </div>
-                <div class="metric-divider"></div>
-                <div class="metric">
-                    <span class="metric-value" data-count="15">0</span><span class="metric-suffix">+</span>
-                    <span class="metric-label">AI Systems Built</span>
+
+            <!-- Apple-Style Stat Strip -->
+            <div class="stat-strip reveal">
+                <div class="stat-grid">
+                    <div class="stat-cell">
+                        <div class="stat-num" data-val="5" data-suffix="+">5+</div>
+                        <div class="stat-label">Years Production AI/ML</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="stat-num" data-val="50" data-suffix="K+">50K+</div>
+                        <div class="stat-label">Regulatory Docs Indexed</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="stat-num" data-val="93" data-suffix="%">93%</div>
+                        <div class="stat-label">Lookup Time Reduction</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="stat-num" data-val="4" data-suffix="h">4h</div>
+                        <div class="stat-label">EKS Release Cycles (from 3d)</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="stat-num" data-val="92" data-suffix="%">92%</div>
+                        <div class="stat-label">AML Risk Alert Precision</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
         </div>
     </section>
 
     <!-- ===== ABOUT SECTION ===== -->
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">01 — About</span>
-                <h2 class="section-title">From data pipelines<br />to <span class="gradient-text">intelligent
-                        systems.</span></h2>
+    <section id="about" class="section-fog">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="section-tag">01 — Profile</span>
+                <h2 class="section-title">Engineering intelligent systems from research to high-throughput production.</h2>
             </div>
+
             <div class="about-grid">
-                <div class="about-story reveal">
+                <div class="about-card-narrative reveal">
                     <p class="about-lead">
-                        I started my career deep in the data layer — building ETL pipelines, modeling schemas,
-                        and wrangling terabytes of enterprise data. But data without intelligence is just storage.
+                        I specialize in architecting end-to-end Generative AI, RAG pipelines, and agentic workflows that operate reliably in high-stakes, regulated enterprise environments.
                     </p>
-                    <p>
-                        That realization pushed me toward AI engineering. Today, I design and deploy
-                        <strong>production-grade machine learning systems</strong> — from fine-tuned LLMs and RAG
-                        pipelines
-                        to real-time inference APIs running on Kubernetes. I work at the intersection of
-                        <strong>ML research and software engineering</strong>, turning experimental models into
-                        reliable, scalable products.
-                    </p>
-                    <p>
-                        My current focus is on <strong>LLM orchestration</strong>, <strong>agentic AI
-                            frameworks</strong>,
-                        and <strong>multimodal AI systems</strong> — building the infrastructure that lets AI
-                        actually do useful work in the real world.
-                    </p>
+                    <div class="about-narrative">
+                        <p>
+                            Over the last 5+ years across <strong>banking, healthcare, and telecom</strong>, I have focused on closing the gap between cutting-edge foundational models and production reliability. My work spans <strong>domain LLM fine-tuning (LoRA/QLoRA)</strong>, multi-agent orchestration with <strong>LangGraph & Semantic Kernel</strong>, and low-latency cloud deployments on <strong>Amazon EKS, SageMaker, and Azure OpenAI</strong>.
+                        </p>
+                        <p>
+                            I prioritize rigorous evaluation, automated CI/CD verification, real-time drift detection, and strict governance (SOX, FINRA, AML, HIPAA, PII protection), ensuring AI systems deliver measurable ROI with high precision and defensibility.
+                        </p>
+                    </div>
                 </div>
-                <div class="about-cards reveal">
-                    <div class="about-card">
-                        <div class="about-card-icon">🧠</div>
-                        <h3>LLM Systems</h3>
-                        <p>Designing RAG pipelines, agent orchestration, and prompt engineering systems using LangChain
-                            and Pydantic.</p>
+
+                <div class="about-side-cards reveal">
+                    <div class="mini-highlight-card">
+                        <div class="mini-icon">⚡</div>
+                        <h3>Production RAG & LLMs</h3>
+                        <p>Hybrid vector + semantic search with cross-encoder re-ranking, source attribution, and sub-second token streaming.</p>
                     </div>
-                    <div class="about-card">
-                        <div class="about-card-icon">⚙️</div>
-                        <h3>ML Infrastructure</h3>
-                        <p>Building scalable ML pipelines on AWS/Azure with SageMaker, Airflow, and containerized
-                            inference endpoints.</p>
+
+                    <div class="mini-highlight-card">
+                        <div class="mini-icon">🤖</div>
+                        <h3>Multi-Agent Systems</h3>
+                        <p>Hierarchical agent workflows for automated document intelligence, clause extraction, and iterative task reasoning.</p>
                     </div>
-                    <div class="about-card">
-                        <div class="about-card-icon">🚀</div>
-                        <h3>AI Products</h3>
-                        <p>End-to-end product development — from multimodal AI prototypes to production-deployed
-                            computer vision systems.</p>
+
+                    <div class="mini-highlight-card">
+                        <div class="mini-icon">🛡️</div>
+                        <h3>MLOps & AI Governance</h3>
+                        <p>Canary rollouts, drift/bias monitoring (Evidently AI, Prometheus), PII masking, and full regulatory compliance.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-
     <!-- ===== EXPERIENCE SECTION ===== -->
-    <section id="experience" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">02 — Experience</span>
-                <h2 class="section-title">Building AI at <span class="gradient-text">enterprise scale.</span></h2>
+    <section id="experience">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="section-tag">02 — Career</span>
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-desc">Building and scaling enterprise-grade machine learning and generative AI systems.</p>
             </div>
-            <div class="timeline">
+
+            <div class="timeline-list">
                 <!-- Fifth Third Bank -->
                 <div class="timeline-item reveal">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>AI Engineer (Generative AI & ML)</h3>
-                                <span class="company">Fifth Third Bank</span>
-                            </div>
-                            <span class="timeline-date">Mar 2024 — Present</span>
-                        </div>
-                        <ul class="timeline-bullets">
-                            <li>Designed and delivered a production RAG platform in Python using <strong>Azure OpenAI (GPT-4), Azure AI Search</strong>, LangChain, and cross-encoder reranking across 50K+ regulatory documents, reducing compliance lookup time from about 20 minutes to 90 seconds with source-attributed answers.</li>
-                            <li>Built a <strong>multi-agent document-intelligence workflow</strong> with LangGraph and Semantic Kernel for classification, summarization, and clause extraction, standardizing compliance review of loan agreements.</li>
+                    <div class="tl-meta">
+                        <div class="tl-date">Mar 2024 — Present</div>
+                        <div class="tl-company">Fifth Third Bank</div>
+                        <div class="tl-location">Remote, USA</div>
+                    </div>
+
+                    <div class="tl-content">
+                        <div class="tl-role">AI Engineer (Generative AI & ML)</div>
+                        <ul class="tl-bullets">
+                            <li>Designed and delivered a production RAG platform in Python using <strong>Azure OpenAI (GPT-4), Azure AI Search</strong>, LangChain, and cross-encoder reranking across <strong>50K+ regulatory documents</strong>, reducing compliance lookup time from <strong>20 minutes to 90 seconds (93% reduction)</strong> with source-attributed answers.</li>
+                            <li>Built a <strong>multi-agent document-intelligence workflow</strong> with LangGraph and Semantic Kernel for classification, summarization, and clause extraction, standardizing compliance review of loan agreements and boosting clause extraction precision by <strong>28%</strong>.</li>
                             <li>Built and maintained <strong>Python services for RAG and AML workflows</strong>, implementing unit and integration tests, CI/CD quality gates, peer review, and release validation for production deployments.</li>
-                            <li>Fine-tuned domain embedding models and LLM adapters using <strong>LoRA/QLoRA, PEFT, and PyTorch</strong>, improving retrieval relevance and reducing hallucination rates in domain-specific evaluations.</li>
-                            <li>Developed real-time <strong>AML transaction-risk scoring in Python with XGBoost</strong> using engineered transaction signals in Snowflake on AWS, producing prioritized alerts for analyst review and investigation.</li>
-                            <li>Productionized AI/ML services on <strong>Amazon EKS and AWS Bedrock</strong> using Docker, MLflow Model Registry, and canary rollouts, reducing model release cycles from 3 days to 4 hours.</li>
+                            <li>Fine-tuned domain embedding models and LLM adapters using <strong>LoRA/QLoRA, PEFT, and PyTorch</strong>, improving retrieval relevance and reducing hallucination rates by <strong>22%</strong> in domain-specific evaluations.</li>
+                            <li>Developed real-time <strong>AML transaction-risk scoring in Python with XGBoost</strong> using 60+ engineered transaction signals in Snowflake on AWS, producing <strong>2,400+ prioritized alerts/month at 92% precision</strong> for analyst review and investigation.</li>
+                            <li>Productionized AI/ML services on <strong>Amazon EKS and AWS Bedrock</strong> using Docker, MLflow Model Registry, and canary rollouts, reducing model release cycles from <strong>3 days to 4 hours</strong>.</li>
                             <li>Implemented monitoring and drift detection with <strong>Prometheus/Grafana, Azure Monitor, and Evidently AI</strong> across production compliance models, with RBAC, PII masking, and audit logging supporting SOX and FINRA controls.</li>
                         </ul>
-                        <div class="timeline-tags">
-                            <span>Python</span><span>LangChain</span><span>LangGraph</span><span>Azure OpenAI</span><span>PyTorch</span><span>AWS</span><span>Snowflake</span><span>Kubernetes</span><span>MLflow</span><span>Prometheus</span>
+                        <div class="tl-tags">
+                            <span>Python</span><span>Azure OpenAI</span><span>LangChain</span><span>LangGraph</span><span>Amazon EKS</span><span>AWS Bedrock</span><span>PyTorch</span><span>Snowflake</span><span>MLflow</span><span>Prometheus</span>
                         </div>
                     </div>
                 </div>
+
                 <!-- LTIMindtree -->
                 <div class="timeline-item reveal">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Machine Learning Engineer</h3>
-                                <span class="company">LTIMindtree</span>
-                            </div>
-                            <span class="timeline-date">Jan 2022 — Jan 2023</span>
-                        </div>
-                        <ul class="timeline-bullets">
-                            <li>Developed patient readmission-risk models (<strong>XGBoost, Random Forest</strong>) on 200K+ EHR records with SHAP explainability, raising high-risk patient recall 15%.</li>
-                            <li>Built a <strong>clinical NLP pipeline</strong> with spaCy NER and BERT-based embeddings over discharge summaries, improving downstream clinical prediction performance.</li>
-                            <li>Deployed <strong>hybrid ARIMA and LSTM anomaly detection</strong> on ICU vitals, generating earlier warning signals while controlling false positives.</li>
-                            <li>Migrated 8 ML workflows to <strong>AWS SageMaker Pipelines</strong> with versioned datasets and automated hyperparameter optimization, compressing experiment-to-production time from 14 days to 3 days.</li>
-                            <li>Containerized <strong>inference REST endpoints with Docker on AWS ECS</strong>, using autoscaling to support reliable model serving under peak demand.</li>
+                    <div class="tl-meta">
+                        <div class="tl-date">Jan 2022 — Jan 2023</div>
+                        <div class="tl-company">LTIMindtree</div>
+                        <div class="tl-location">India</div>
+                    </div>
+
+                    <div class="tl-content">
+                        <div class="tl-role">Machine Learning Engineer</div>
+                        <ul class="tl-bullets">
+                            <li>Developed patient readmission-risk models (<strong>XGBoost, Random Forest</strong>) on <strong>200K+ EHR records</strong> with SHAP explainability, raising high-risk patient recall <strong>15%</strong> for a U.S. hospital network client.</li>
+                            <li>Built a <strong>clinical NLP pipeline</strong> with spaCy NER and BERT-based embeddings over <strong>50K+ discharge summaries</strong>, boosting downstream clinical prediction performance by <strong>12% F1</strong>.</li>
+                            <li>Deployed <strong>hybrid ARIMA and LSTM anomaly detection</strong> on ICU vitals, generating <strong>6–12 hour early warning signals</strong> at a low 4% false-positive rate.</li>
+                            <li>Migrated 8 ML workflows to <strong>AWS SageMaker Pipelines</strong> with versioned datasets and automated hyperparameter optimization, compressing experiment-to-production time from <strong>14 days to 3 days</strong>.</li>
+                            <li>Containerized <strong>inference REST endpoints with Docker on AWS ECS</strong>, using autoscaling to sustain sub-200ms p99 latency at <strong>3× peak load</strong>.</li>
                         </ul>
-                        <div class="timeline-tags">
-                            <span>Python</span><span>XGBoost</span><span>spaCy</span><span>ARIMA</span><span>LSTM</span><span>AWS SageMaker</span><span>Docker</span><span>ECS</span>
+                        <div class="tl-tags">
+                            <span>Python</span><span>AWS SageMaker</span><span>Docker</span><span>AWS ECS</span><span>PyTorch</span><span>XGBoost</span><span>spaCy</span><span>BERT</span><span>ARIMA / LSTM</span>
                         </div>
                     </div>
                 </div>
+
                 <!-- Genpact -->
                 <div class="timeline-item reveal">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Data Scientist</h3>
-                                <span class="company">Genpact</span>
-                            </div>
-                            <span class="timeline-date">Oct 2019 — Dec 2021</span>
-                        </div>
-                        <ul class="timeline-bullets">
-                            <li>Engineered <strong>behavioral features</strong> from call-detail-record and CRM data using PySpark and dbt across 500K+ daily subscriber records, with Great Expectations validation, lifting retention-model recall by 18%.</li>
-                            <li>Deployed a <strong>gradient-boosted churn model</strong> achieving 0.87 ROC-AUC through Azure ML batch scoring, feeding regional CRM retention workflows.</li>
+                    <div class="tl-meta">
+                        <div class="tl-date">Oct 2019 — Dec 2021</div>
+                        <div class="tl-company">Genpact</div>
+                        <div class="tl-location">India</div>
+                    </div>
+
+                    <div class="tl-content">
+                        <div class="tl-role">Data Scientist</div>
+                        <ul class="tl-bullets">
+                            <li>Engineered <strong>120+ behavioral features</strong> from call-detail-record (CDR) and CRM data using <strong>PySpark and dbt</strong> across <strong>500K+ daily subscriber records</strong>, with Great Expectations validation, lifting retention-model recall by <strong>18%</strong>.</li>
+                            <li>Deployed a <strong>gradient-boosted churn model achieving 0.87 ROC-AUC</strong> through Azure ML batch scoring, feeding regional CRM retention workflows.</li>
                             <li>Segmented subscribers into churn-risk tiers with <strong>K-means clustering and SHAP attribution</strong>, and designed A/B tests of retention campaigns to validate model-driven targeting of the highest-risk, highest-value accounts.</li>
                             <li>Built <strong>Power BI dashboards on Azure Synapse</strong> showing churn-risk segments and revenue-at-risk for regional retention teams, replacing manual reporting in weekly campaign reviews.</li>
                         </ul>
-                        <div class="timeline-tags">
-                            <span>PySpark</span><span>Azure ML</span><span>Python</span><span>SQL</span><span>dbt</span><span>Great Expectations</span><span>Power BI</span>
+                        <div class="tl-tags">
+                            <span>PySpark</span><span>Azure ML</span><span>Python</span><span>SQL</span><span>dbt</span><span>Great Expectations</span><span>Power BI</span><span>Azure Synapse</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== TECH STACK SECTION ===== -->
-    <section id="techstack" class="section section-dark">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">03 — Tech Stack</span>
-                <h2 class="section-title">Tools of the <span class="gradient-text">trade.</span></h2>
-            </div>
-            <div class="stack-grid">
-                <div class="stack-category reveal">
-                    <div class="stack-category-header">
-                        <span class="stack-icon">🤖</span>
-                        <h3>GenAI & LLM Engineering</h3>
-                    </div>
-                    <div class="stack-items">
-                        <div class="stack-item"><span class="stack-dot"></span>RAG Pipelines</div>
-                        <div class="stack-item"><span class="stack-dot"></span>LangChain & LangGraph</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Prompt Engineering</div>
-                        <div class="stack-item"><span class="stack-dot"></span>LLM Evaluation & Fine-tuning (LoRA/PEFT)</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Hugging Face Transformers</div>
-                        <div class="stack-item"><span class="stack-dot"></span>FAISS, Pinecone, ChromaDB</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Semantic & Hybrid Retrieval</div>
-                    </div>
-                </div>
-                <div class="stack-category reveal">
-                    <div class="stack-category-header">
-                        <span class="stack-icon">🧠</span>
-                        <h3>Machine Learning</h3>
-                    </div>
-                    <div class="stack-items">
-                        <div class="stack-item"><span class="stack-dot"></span>PyTorch & TensorFlow</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Scikit-learn</div>
-                        <div class="stack-item"><span class="stack-dot"></span>XGBoost & LightGBM</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Time-series (ARIMA & LSTM)</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Feature Engineering</div>
-                        <div class="stack-item"><span class="stack-dot"></span>A/B Testing</div>
-                        <div class="stack-item"><span class="stack-dot"></span>MLflow</div>
-                    </div>
-                </div>
-                <div class="stack-category reveal">
-                    <div class="stack-category-header">
-                        <span class="stack-icon">📝</span>
-                        <h3>NLP & Information Extraction</h3>
-                    </div>
-                    <div class="stack-items">
-                        <div class="stack-item"><span class="stack-dot"></span>spaCy & NLTK</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Text Classification</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Named Entity Recognition</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Embeddings</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Document Intelligence</div>
-                        <div class="stack-item"><span class="stack-dot"></span>OCR Pipelines</div>
-                    </div>
-                </div>
-                <div class="stack-category reveal">
-                    <div class="stack-category-header">
-                        <span class="stack-icon">☁️</span>
-                        <h3>Cloud & MLOps</h3>
-                    </div>
-                    <div class="stack-items">
-                        <div class="stack-item"><span class="stack-dot"></span>AWS (SageMaker, Bedrock, S3, Lambda)</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Azure & GCP (Vertex AI)</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Docker & Kubernetes</div>
-                        <div class="stack-item"><span class="stack-dot"></span>ECS, EKS, Redshift</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Terraform</div>
-                        <div class="stack-item"><span class="stack-dot"></span>GitHub Actions & CI/CD</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Prometheus, Grafana, CloudWatch</div>
-                    </div>
-                </div>
-                <div class="stack-category reveal">
-                    <div class="stack-category-header">
-                        <span class="stack-icon">🔧</span>
-                        <h3>Data Engineering & Pipelines</h3>
-                    </div>
-                    <div class="stack-items">
-                        <div class="stack-item"><span class="stack-dot"></span>Python & SQL</div>
-                        <div class="stack-item"><span class="stack-dot"></span>PySpark & Spark</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Airflow</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Snowflake & dbt</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Kafka</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Great Expectations</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Tableau & Power BI</div>
-                    </div>
-                </div>
-                <div class="stack-category reveal">
-                    <div class="stack-category-header">
-                        <span class="stack-icon">🌐</span>
-                        <h3>Vector Databases / Retrieval</h3>
-                    </div>
-                    <div class="stack-items">
-                        <div class="stack-item"><span class="stack-dot"></span>FAISS</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Pinecone</div>
-                        <div class="stack-item"><span class="stack-dot"></span>ChromaDB</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Hybrid Retrieval</div>
-                        <div class="stack-item"><span class="stack-dot"></span>Cosine Similarity</div>
                     </div>
                 </div>
             </div>
@@ -347,326 +287,358 @@
     </section>
 
     <!-- ===== PROJECTS SECTION ===== -->
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">04 — Projects</span>
-                <h2 class="section-title">Open source & <span class="gradient-text">side projects.</span></h2>
+    <section id="projects" class="section-fog">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="section-tag">03 — Projects</span>
+                <h2 class="section-title">Featured Systems & Open Source</h2>
+                <p class="section-desc">Selected AI applications and developer tools built with high craft and precision.</p>
             </div>
-            <div class="github-grid">
-                <div class="github-card reveal">
-                    <div class="github-card-header">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                            <path d="M22 3h-6a4 4 0 0 1 4 4v14a3 3 0 0 1 3-3h7z" />
-                        </svg>
-                        <a href="https://github.com/HariMKL-oss/LabelSentinel" target="_blank" class="github-card-link">↗</a>
-                    </div>
-                    <h3>LabelSentinel</h3>
-                    <p>Multimodal OCR and LLM ingredient-analysis system with adaptive routing among on-device SLMs, GPT-4o, and Gemini 2.5 Pro for 3M+ products; ~70% offline query handling at ~1.5s latency.</p>
-                    <div class="github-card-tags">
-                        <span>Computer Vision</span><span>LLMs</span><span>React</span><span>TypeScript</span>
-                    </div>
-                    <div class="github-card-meta">
-                        <span class="gh-lang"><span class="gh-dot" style="background:#3178C6"></span>TypeScript</span>
-                        <span>⭐ Patent Pending</span>
-                    </div>
-                </div>
-                <div class="github-card reveal">
-                    <div class="github-card-header">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                            <path d="M22 3h-6a4 4 0 0 1 4 4v14a3 3 0 0 1 3-3h7z" />
-                        </svg>
-                        <a href="https://github.com/HariMKL-oss/FinDocsAI" target="_blank"
-                            class="github-card-link">↗</a>
-                    </div>
-                    <h3>FinDocs AI</h3>
-                    <p>Enterprise RAG chatbot for financial-compliance documents (React/TypeScript, FastAPI, FAISS) with semantic re-ranking and a 3-tier routing engine cutting inference cost 60% with real-time observability.</p>
-                    <div class="github-card-tags">
-                        <span>FastAPI</span><span>FAISS</span><span>Zustand</span><span>Streaming</span>
-                    </div>
-                    <div class="github-card-meta" style="justify-content: space-between;">
-                        <div>
-                            <span class="gh-lang"><span class="gh-dot" style="background:#3572A5"></span>Python</span>
-                            <span>🔧 Active</span>
-                        </div>
-                        <a href="https://HariMKL-oss.github.io/FinDocsAI/" target="_blank" style="color: var(--accent-color); font-size: 0.85rem; font-weight: 500; text-decoration: none;">🚀 Live Demo ↗</a>
-                    </div>
-                </div>
-                <div class="github-card reveal">
-                    <div class="github-card-header">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                            <path d="M22 3h-6a4 4 0 0 1 4 4v14a3 3 0 0 1 3-3h7z" />
-                        </svg>
-                        <a href="https://github.com/HariMKL-oss/Skillsmith" target="_blank"
-                            class="github-card-link">↗</a>
-                    </div>
-                    <h3>Skillsmith</h3>
-                    <p>Open-source skill-authoring tool for Claude agents in the MCP ecosystem. Built using Devin AI and Claude Code for automated repository analysis, feature development, testing, and debugging.</p>
-                    <div class="github-card-tags">
-                        <span>Python</span><span>Agentic AI</span><span>MCP</span><span>Devin AI</span>
-                    </div>
-                    <div class="github-card-meta">
-                        <span class="gh-lang"><span class="gh-dot" style="background:#3572A5"></span>Python</span>
-                        <span>🔧 Active</span>
-                    </div>
-                </div>
-                <div class="github-card github-card-cta reveal">
-                    <div class="github-cta-content">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" opacity="0.5">
-                            <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
-                        <h3>More on GitHub</h3>
-                        <p>Explore all repositories, experiments, and AI engineering projects.</p>
-                        <a href="https://github.com/HariMKL-oss" target="_blank" class="btn btn-secondary">View Profile
-                            →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ===== AI PHILOSOPHY SECTION ===== -->
-    <section id="philosophy" class="section section-dark">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">05 — Philosophy</span>
-                <h2 class="section-title">How I think about <span class="gradient-text">AI engineering.</span></h2>
-            </div>
-            <div class="philosophy-grid">
-                <div class="philosophy-card reveal">
-                    <div class="philosophy-number">01</div>
-                    <h3>Reliability Over Novelty</h3>
-                    <p>The best AI system is the one that works at 3 AM without paging anyone. I prioritize
-                        deterministic fallbacks, graceful degradation, and observability over chasing the latest model.
+            <div class="projects-grid">
+                <!-- LabelSentinel -->
+                <div class="project-card reveal">
+                    <div class="project-badge-row">
+                        <span class="badge-tag mint">Patent Pending</span>
+                        <span class="badge-tag blue">AR Smart Glasses</span>
+                    </div>
+                    <h3 class="project-title">LabelSentinel</h3>
+                    <p class="project-tagline">Multimodal Nutrition-Intelligence Platform</p>
+                    <p class="project-desc">
+                        Multimodal OCR and LLM ingredient-analysis system with adaptive routing among on-device SLMs (Gemma 3 4B, Llama 3.2 3B), GPT-4o, and Gemini 2.5 Pro for 3M+ products. Resolves ~70% of queries offline at ~1.5s latency and $0.004/call inference cost.
                     </p>
+                    <div class="project-tags">
+                        <span>Computer Vision</span><span>Multimodal LLMs</span><span>React</span><span>TypeScript</span><span>ML Kit</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://stitch.withgoogle.com/preview/14176056805348093588?node-id=f30967385a3f43b0b34308a9d74e4bb1" target="_blank" class="btn-project primary">
+                            <span>Live Demo</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/HariMKL-oss/LabelSentinel" target="_blank" class="btn-project outline">
+                            <span>GitHub</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="philosophy-card reveal">
-                    <div class="philosophy-number">02</div>
-                    <h3>Hybrid Inference Architecture</h3>
-                    <p>Not every query needs GPT-4. I design tiered systems where simple tasks run on-device, moderate
-                        tasks use quantized SLMs, and only complex queries hit cloud LLMs. Cost and latency optimized by
-                        design.</p>
+
+                <!-- FinDocs AI -->
+                <div class="project-card reveal">
+                    <div class="project-badge-row">
+                        <span class="badge-tag blue">Agentic RAG</span>
+                        <span class="badge-tag amber">Financial Compliance</span>
+                    </div>
+                    <h3 class="project-title">FinDocs AI</h3>
+                    <p class="project-tagline">RAG Chatbot for Financial-Compliance Documents</p>
+                    <p class="project-desc">
+                        Full-stack RAG application (React/TypeScript, FastAPI, FAISS) over BSA/AML, KYC, and Dodd-Frank regulatory documents with semantic re-ranking (96% accuracy). 3-tier query routing cuts inference cost 60% with real-time SSE streaming and telemetry observability.
+                    </p>
+                    <div class="project-tags">
+                        <span>FastAPI</span><span>FAISS</span><span>Zustand</span><span>LangChain</span><span>SSE Streaming</span><span>Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://HariMKL-oss.github.io/FinDocsAI/" target="_blank" class="btn-project primary">
+                            <span>Live Demo</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/HariMKL-oss/FinDocsAI" target="_blank" class="btn-project outline">
+                            <span>GitHub</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="philosophy-card reveal">
-                    <div class="philosophy-number">03</div>
-                    <h3>Agents That Ship</h3>
-                    <p>Agentic architectures are powerful but fragile. I build agent systems with structured outputs,
-                        tool validation, retry logic, and human-in-the-loop checkpoints — not autonomous chaos.</p>
-                </div>
-                <div class="philosophy-card reveal">
-                    <div class="philosophy-number">04</div>
-                    <h3>Infrastructure as AI Enabler</h3>
-                    <p>The gap between a Jupyter notebook and a production API is massive. I close that gap with
-                        containerized deployments, CI/CD for models, feature stores, and monitoring that actually
-                        catches drift.</p>
-                </div>
-                <div class="philosophy-card reveal">
-                    <div class="philosophy-number">05</div>
-                    <h3>Cost-Conscious AI</h3>
-                    <p>Enterprise AI must be cost-sustainable. I design systems that minimize token usage, cache
-                        aggressively, batch intelligently, and know when a regex beats a transformer.</p>
-                </div>
-                <div class="philosophy-card reveal">
-                    <div class="philosophy-number">06</div>
-                    <h3>Products, Not Demos</h3>
-                    <p>I don't build proof-of-concepts that collect dust. Every system I create has a deployment path,
-                        monitoring, error handling, and a user who depends on it.</p>
+
+                <!-- Skillsmith -->
+                <div class="project-card reveal">
+                    <div class="project-badge-row">
+                        <span class="badge-tag mint">Open Source</span>
+                        <span class="badge-tag blue">MCP Framework</span>
+                    </div>
+                    <h3 class="project-title">Skillsmith</h3>
+                    <p class="project-tagline">Skill-Authoring Framework for Claude AI Agents</p>
+                    <p class="project-desc">
+                        Open-source meta-skill framework that scaffolds, validates, and generates evaluations for Claude agent skills in the Model Context Protocol (MCP) ecosystem. Developed using Devin AI and Claude Code for automated repository analysis and testing.
+                    </p>
+                    <div class="project-tags">
+                        <span>Python</span><span>Agentic AI</span><span>MCP</span><span>Devin AI</span><span>Claude Code</span><span>Automation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/HariMKL-oss/Skillsmith" target="_blank" class="btn-project primary">
+                            <span>View on GitHub</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== EDUCATION & CERTS ===== -->
-    <section id="education" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">06 — Education & Certifications</span>
-                <h2 class="section-title">Academic <span class="gradient-text">foundation.</span></h2>
+    <!-- ===== SKILLS SECTION ===== -->
+    <section id="skills">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="section-tag">04 — Expertise</span>
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-desc">Core competencies across Generative AI, Machine Learning, Cloud Architecture, and MLOps.</p>
             </div>
-            <div class="edu-grid">
-                <div class="edu-card reveal">
-                    <div class="edu-icon">🎓</div>
-                    <h3>Master of Science</h3>
-                    <p class="edu-field">Cybersecurity (Data Analytics Concentration)</p>
-                    <p class="edu-school">Webster University, St. Louis, MO</p>
-                    <p class="edu-date">Jan 2023 - May 2025</p>
-                    <div class="edu-details" style="margin-top: 12px; font-size: 0.8rem; color: var(--text-tertiary);">
-                        <strong>Relevant:</strong> Machine Learning for Security Analytics, Statistical Modeling, NLP, Network Data Analysis
+
+            <div class="skills-grid">
+                <!-- GenAI & Agents -->
+                <div class="skill-card reveal">
+                    <div class="skill-card-head">
+                        <span class="skill-dot blue"></span>
+                        <h3>Generative AI & Agents</h3>
+                    </div>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Azure OpenAI (GPT-4/4o)</span>
+                        <span class="skill-pill">RAG Platforms</span>
+                        <span class="skill-pill">LangChain</span>
+                        <span class="skill-pill">LangGraph</span>
+                        <span class="skill-pill">Semantic Kernel</span>
+                        <span class="skill-pill">LoRA / QLoRA</span>
+                        <span class="skill-pill">PEFT Fine-Tuning</span>
+                        <span class="skill-pill">Prompt Engineering</span>
+                        <span class="skill-pill">Cross-Encoder Re-Ranking</span>
+                        <span class="skill-pill">Multi-Agent Systems</span>
                     </div>
                 </div>
-                <div class="edu-card reveal">
-                    <div class="edu-icon">🎓</div>
-                    <h3>Bachelor of Science</h3>
-                    <p class="edu-field">Computer Science</p>
-                    <p class="edu-school">Geethanjali College of Engineering & Technology, Hyderabad, India</p>
-                    <p class="edu-date">July 2016 - May 2020</p>
+
+                <!-- ML & NLP -->
+                <div class="skill-card reveal">
+                    <div class="skill-card-head">
+                        <span class="skill-dot mint"></span>
+                        <h3>Machine Learning & NLP</h3>
+                    </div>
+                    <div class="skill-pills">
+                        <span class="skill-pill">PyTorch</span>
+                        <span class="skill-pill">scikit-learn</span>
+                        <span class="skill-pill">XGBoost & LightGBM</span>
+                        <span class="skill-pill">BERT & Transformers</span>
+                        <span class="skill-pill">spaCy NER</span>
+                        <span class="skill-pill">SHAP Explainability</span>
+                        <span class="skill-pill">Time-Series (ARIMA/LSTM)</span>
+                        <span class="skill-pill">Feature Engineering</span>
+                        <span class="skill-pill">A/B Testing</span>
+                    </div>
+                </div>
+
+                <!-- Cloud & MLOps -->
+                <div class="skill-card reveal">
+                    <div class="skill-card-head">
+                        <span class="skill-dot amber"></span>
+                        <h3>Cloud & MLOps</h3>
+                    </div>
+                    <div class="skill-pills">
+                        <span class="skill-pill">AWS (SageMaker, Bedrock)</span>
+                        <span class="skill-pill">Amazon EKS & ECS</span>
+                        <span class="skill-pill">AWS Lambda & S3</span>
+                        <span class="skill-pill">Azure ML & AKS</span>
+                        <span class="skill-pill">Azure AI Search</span>
+                        <span class="skill-pill">Docker & Kubernetes</span>
+                        <span class="skill-pill">MLflow Registry</span>
+                        <span class="skill-pill">CI/CD (GitHub Actions)</span>
+                        <span class="skill-pill">Terraform</span>
+                        <span class="skill-pill">Prometheus & Grafana</span>
+                    </div>
+                </div>
+
+                <!-- Data & Retrieval -->
+                <div class="skill-card reveal">
+                    <div class="skill-card-head">
+                        <span class="skill-dot blue"></span>
+                        <h3>Data & Retrieval</h3>
+                    </div>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Python & SQL</span>
+                        <span class="skill-pill">PySpark</span>
+                        <span class="skill-pill">Snowflake</span>
+                        <span class="skill-pill">FAISS</span>
+                        <span class="skill-pill">PostgreSQL</span>
+                        <span class="skill-pill">dbt</span>
+                        <span class="skill-pill">Great Expectations</span>
+                        <span class="skill-pill">Pandas & NumPy</span>
+                        <span class="skill-pill">Power BI</span>
+                        <span class="skill-pill">Azure Synapse</span>
+                    </div>
+                </div>
+
+                <!-- Governance & Compliance -->
+                <div class="skill-card reveal">
+                    <div class="skill-card-head">
+                        <span class="skill-dot mint"></span>
+                        <h3>Governance & Compliance</h3>
+                    </div>
+                    <div class="skill-pills">
+                        <span class="skill-pill">Responsible AI</span>
+                        <span class="skill-pill">Model Drift (Evidently AI)</span>
+                        <span class="skill-pill">Bias Auditing</span>
+                        <span class="skill-pill">PII Protection & Masking</span>
+                        <span class="skill-pill">SOX Compliance</span>
+                        <span class="skill-pill">AML Controls</span>
+                        <span class="skill-pill">FINRA Standards</span>
+                        <span class="skill-pill">HIPAA Security</span>
+                    </div>
+                </div>
+
+                <!-- Developer Tools -->
+                <div class="skill-card reveal">
+                    <div class="skill-card-head">
+                        <span class="skill-dot ink"></span>
+                        <h3>Developer Tools & APIs</h3>
+                    </div>
+                    <div class="skill-pills">
+                        <span class="skill-pill">FastAPI</span>
+                        <span class="skill-pill">REST APIs</span>
+                        <span class="skill-pill">Git</span>
+                        <span class="skill-pill">Linux / Bash</span>
+                        <span class="skill-pill">GitHub Copilot</span>
+                        <span class="skill-pill">Claude Code</span>
+                        <span class="skill-pill">Devin AI</span>
+                        <span class="skill-pill">Model Context Protocol</span>
+                    </div>
                 </div>
             </div>
-            <div class="cert-grid">
-                <div class="cert-card reveal">
-                    <div class="cert-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
-                            <path d="m9 12 2 2 4-4" />
-                        </svg>
+        </div>
+    </section>
+
+    <!-- ===== EDUCATION & CERTIFICATIONS ===== -->
+    <section id="education" class="section-fog">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="section-tag">05 — Background</span>
+                <h2 class="section-title">Education & Certifications</h2>
+                <p class="section-desc">Academic foundation and industry certifications.</p>
+            </div>
+
+            <div class="edu-cert-grid">
+                <!-- Education Column -->
+                <div class="edu-column reveal">
+                    <div class="column-title">🎓 Academic Degrees</div>
+                    
+                    <div class="edu-card">
+                        <h3 class="edu-degree">Master of Science — Cybersecurity</h3>
+                        <p class="edu-school">Webster University, St. Louis, MO</p>
+                        <p class="edu-dates">Jan 2023 – May 2025 • Data Analytics Concentration</p>
                     </div>
-                    <h4>AWS Solutions Architect</h4>
-                    <p>Associate</p>
+
+                    <div class="edu-card">
+                        <h3 class="edu-degree">Bachelor of Science — Computer Science</h3>
+                        <p class="edu-school">Geethanjali College of Engineering & Technology, Hyderabad, India</p>
+                        <p class="edu-dates">Jul 2016 – May 2020</p>
+                    </div>
                 </div>
-                <div class="cert-card reveal">
-                    <div class="cert-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
-                            <path d="m9 12 2 2 4-4" />
-                        </svg>
+
+                <!-- Certifications Column -->
+                <div class="cert-column reveal">
+                    <div class="column-title">📜 Certifications</div>
+
+                    <div class="cert-card">
+                        <div class="cert-badge-icon">☁️</div>
+                        <div>
+                            <div class="cert-name">AWS Certified Solutions Architect</div>
+                            <div class="cert-issuer">Amazon Web Services — Associate</div>
+                        </div>
                     </div>
-                    <h4>AWS ML Engineer</h4>
-                    <p>Associate</p>
-                </div>
-                <div class="cert-card reveal">
-                    <div class="cert-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
-                            <path d="m9 12 2 2 4-4" />
-                        </svg>
+
+                    <div class="cert-card">
+                        <div class="cert-badge-icon">🧠</div>
+                        <div>
+                            <div class="cert-name">AWS Certified Machine Learning Engineer</div>
+                            <div class="cert-issuer">Amazon Web Services — Associate</div>
+                        </div>
                     </div>
-                    <h4>Azure AI Engineer</h4>
-                    <p>Associate (AI-102)</p>
-                </div>
-                <div class="cert-card reveal">
-                    <div class="cert-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
-                            <path d="m9 12 2 2 4-4" />
-                        </svg>
+
+                    <div class="cert-card">
+                        <div class="cert-badge-icon">⚡</div>
+                        <div>
+                            <div class="cert-name">Microsoft Certified: Azure AI Engineer</div>
+                            <div class="cert-issuer">Microsoft — Associate (AI-102)</div>
+                        </div>
                     </div>
-                    <h4>IBM Generative AI</h4>
-                    <p>Foundation Models, Platforms, AI Governance, and NLP</p>
+
+                    <div class="cert-card">
+                        <div class="cert-badge-icon">🤖</div>
+                        <div>
+                            <div class="cert-name">IBM Generative AI Specialist</div>
+                            <div class="cert-issuer">IBM — Foundation Models, AI Governance & NLP</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== CONTACT SECTION ===== -->
-    <section id="contact" class="section section-dark">
-        <div class="container">
-            <div class="contact-content">
-                <span class="section-tag">07 — Contact</span>
-                <h2 class="contact-title">Let's build<br /><span class="gradient-text">intelligent systems.</span></h2>
-                <p class="contact-subtitle">
-                    I'm currently open to new opportunities in AI/ML engineering.
-                    Whether you're building LLM-powered products, scaling ML infrastructure,
-                    or need someone who bridges research and production — let's connect.
+    <section id="contact">
+        <div class="wrap">
+            <div class="section-head center reveal">
+                <span class="section-tag">06 — Contact</span>
+                <h2 class="section-title">Let's build intelligent systems together.</h2>
+                <p class="section-desc">
+                    Open to full-time AI Engineer and Senior ML Engineering opportunities. Feel free to connect directly.
                 </p>
-                <div class="contact-links">
-                    <a href="mailto:hariprasadm1333@gmail.com" class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <rect width="20" height="16" x="2" y="4" rx="2" />
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="contact-label">Email</span>
-                            <span class="contact-value">hariprasadm1333@gmail.com</span>
-                        </div>
-                    </a>
-                    <a href="tel:+14086492780" class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="contact-label">Phone</span>
-                            <span class="contact-value">+1 (408) 649-2780</span>
-                        </div>
-                    </a>
-                    <a href="https://github.com/HariMKL-oss" target="_blank" class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="contact-label">GitHub</span>
-                            <span class="contact-value">HariMKL-oss</span>
-                        </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/hariprasadmanchikatla/" target="_blank" class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="contact-label">LinkedIn</span>
-                            <span class="contact-value">Hariprasad Manchikatla</span>
-                        </div>
-                    </a>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                        </div>
-                        <div>
-                            <span class="contact-label">Location</span>
-                            <span class="contact-value">Dallas, TX</span>
-                        </div>
+            </div>
+
+            <div class="contact-grid reveal">
+                <a href="mailto:hariprasadm1333@gmail.com" class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg>
                     </div>
-                </div>
-                <a href="mailto:hariprasadm1333@gmail.com" class="btn btn-primary btn-large">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect width="20" height="16" x="2" y="4" rx="2" />
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                    </svg>
-                    Get in Touch
+                    <div class="contact-title">Email</div>
+                    <div class="contact-value">hariprasadm1333@gmail.com</div>
                 </a>
+
+                <a href="tel:+14086492780" class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-title">Phone</div>
+                    <div class="contact-value">+1 (408) 649-2780</div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/hariprasadmanchikatla/" target="_blank" class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-title">LinkedIn</div>
+                    <div class="contact-value">hariprasadmanchikatla</div>
+                </a>
+
+                <div class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </div>
+                    <div class="contact-title">Location</div>
+                    <div class="contact-value">Dallas, TX</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="container">
+        <div class="wrap">
             <div class="footer-content">
-                <p>Designed & Built by <strong>Hariprasad Manchikatla</strong></p>
-                <p class="footer-sub">© 2026 — Built with precision. Engineered for impact.</p>
+                <p>Designed & Engineered by <strong>Hariprasad Manchikatla</strong></p>
+                <p>© 2026 — Built with precision, performance & minimal craft.</p>
             </div>
         </div>
     </footer>
 
-
-
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
-        }
-    }
-    </script>
-    <script type="module" src="three-scene.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
