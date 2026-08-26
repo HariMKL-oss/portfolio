@@ -97,9 +97,11 @@ function initStatCounters() {
                 animated = true;
                 statNums.forEach(numEl => {
                     const targetVal = parseFloat(numEl.getAttribute('data-val'));
+                    const prefix = numEl.getAttribute('data-prefix') || '';
                     const suffix = numEl.getAttribute('data-suffix') || '';
                     if (isNaN(targetVal)) return;
 
+                    const isDecimal = targetVal % 1 !== 0;
                     const duration = 1200; // ms
                     const startTime = performance.now();
 
@@ -109,14 +111,16 @@ function initStatCounters() {
                         
                         // Ease out cubic
                         const easeOut = 1 - Math.pow(1 - progress, 3);
-                        const currentVal = Math.floor(targetVal * easeOut);
+                        const currentVal = isDecimal 
+                            ? (targetVal * easeOut).toFixed(1) 
+                            : Math.floor(targetVal * easeOut);
                         
-                        numEl.textContent = currentVal + suffix;
+                        numEl.textContent = prefix + currentVal + suffix;
 
                         if (progress < 1) {
                             requestAnimationFrame(updateCount);
                         } else {
-                            numEl.textContent = targetVal + suffix;
+                            numEl.textContent = prefix + targetVal + suffix;
                         }
                     }
 
