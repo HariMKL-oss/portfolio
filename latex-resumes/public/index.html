@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaTeX Resume Studio - Overleaf-Style Compiler & PDF Manager</title>
+  
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CodeMirror Editor (LaTeX Mode & Dracula/Dark Theme) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/dialog/dialog.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/matchesonscrollbar.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+
+  <!-- Top App Navigation Bar -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="brand">
+        <i class="fa-solid fa-file-pdf brand-icon"></i>
+        <div class="brand-text">
+          <span class="brand-title">LaTeX Resume Studio</span>
+          <span class="badge" id="compiler-status"><span class="dot online"></span> Ready</span>
+        </div>
+      </div>
+
+      <!-- Document Name Input -->
+      <div class="doc-name-wrapper">
+        <i class="fa-regular fa-file-lines doc-icon"></i>
+        <input type="text" id="doc-filename" value="My_Resume" placeholder="Resume Filename" title="Enter resume filename">
+        <span class="file-ext">.pdf</span>
+      </div>
+
+      <!-- Engine Selector -->
+      <div class="engine-selector">
+        <select id="engine-select" title="Choose LaTeX compiler engine">
+          <option value="pdflatex" selected>pdflatex</option>
+          <option value="xelatex">xelatex</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <!-- Target Download Folder Indicator & Changer -->
+      <div class="folder-control" id="folder-pill" title="Click to change target folder">
+        <i class="fa-solid fa-folder-tree folder-icon"></i>
+        <span class="folder-label" id="current-folder-path">Loading folder...</span>
+        <button class="icon-btn change-folder-btn" id="btn-change-folder" title="Change target download folder">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </button>
+      </div>
+
+      <button class="btn btn-outline" id="btn-open-explorer" title="Open destination folder in Windows File Explorer">
+        <i class="fa-regular fa-folder-open"></i> Open Folder
+      </button>
+
+      <button class="btn btn-primary" id="btn-compile" title="Compile LaTeX code and save to local folder (Ctrl+Enter)">
+        <i class="fa-solid fa-play"></i>
+        <span>Run & Save</span>
+        <kbd>Ctrl+↵</kbd>
+      </button>
+
+      <button class="btn btn-success" id="btn-download-folder" title="Direct download/save PDF to your selected folder">
+        <i class="fa-solid fa-download"></i>
+        <span>Download to Folder</span>
+      </button>
+
+      <div class="dropdown-menu-wrapper">
+        <button class="btn btn-icon" id="btn-more-options" title="More options">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+        <div class="dropdown-content" id="more-dropdown">
+          <button id="btn-download-browser"><i class="fa-solid fa-cloud-arrow-down"></i> Browser Download</button>
+          <button id="btn-export-tex"><i class="fa-solid fa-code"></i> Export .tex Source</button>
+          <button id="btn-open-system-pdf"><i class="fa-solid fa-external-link"></i> Open in Windows PDF App</button>
+          <button id="btn-toggle-saved-drawer"><i class="fa-solid fa-clock-rotate-left"></i> Resumes History</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast hidden">
+    <i class="toast-icon fa-solid fa-circle-check"></i>
+    <span class="toast-msg">Document compiled successfully!</span>
+  </div>
+
+  <!-- Main Split Layout -->
+  <main class="main-container">
+    <!-- Left: Code Editor Pane -->
+    <section class="pane pane-editor" id="pane-editor">
+      <div class="pane-header">
+        <div class="pane-title">
+          <i class="fa-solid fa-code"></i> LaTeX Source (<span id="editor-char-count">0 chars</span>)
+        </div>
+        <div class="editor-actions">
+          <!-- Font Size Adjuster -->
+          <div class="font-size-control" title="Adjust Editor Font Size">
+            <button class="sub-btn icon-only" id="btn-font-decrease" title="Decrease font size (Ctrl+-)" aria-label="Decrease Font Size">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <span id="font-size-label">14px</span>
+            <button class="sub-btn icon-only" id="btn-font-increase" title="Increase font size (Ctrl++)" aria-label="Increase Font Size">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <button class="sub-btn" id="btn-clear-code" title="Clear Editor">
+            <i class="fa-regular fa-trash-can"></i> Clear
+          </button>
+        </div>
+      </div>
+
+      <div class="editor-wrapper">
+        <textarea id="code-editor"></textarea>
+      </div>
+
+      <!-- Error Bar for quick error inspection -->
+      <div class="error-bar hidden" id="error-bar">
+        <div class="error-bar-content">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span id="error-bar-text">Compilation failed with errors.</span>
+        </div>
+        <button class="error-bar-action" id="btn-view-error-logs">View Full Log</button>
+      </div>
+    </section>
+
+    <!-- Resizer Divider -->
+    <div class="pane-resizer" id="pane-resizer"></div>
+
+    <!-- Right: PDF Preview & Compilation Logs Pane -->
+    <section class="pane pane-preview" id="pane-preview">
+      <div class="pane-header">
+        <div class="tabs">
+          <button class="tab active" data-tab="preview-tab">
+            <i class="fa-regular fa-file-pdf"></i> PDF Preview
+          </button>
+          <button class="tab" data-tab="logs-tab">
+            <i class="fa-solid fa-terminal"></i> Compilation Log <span class="log-badge hidden" id="log-error-badge">!</span>
+          </button>
+        </div>
+        <div class="preview-actions">
+          <button class="icon-btn" id="btn-refresh-preview" title="Refresh Preview">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </button>
+          <button class="icon-btn" id="btn-system-view" title="Open in Windows Default PDF Reader">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Content 1: PDF Viewer -->
+      <div class="tab-pane active" id="preview-tab">
+        <div class="empty-state" id="empty-preview">
+          <i class="fa-solid fa-file-circle-plus empty-icon"></i>
+          <h3>No PDF Generated Yet</h3>
+          <p>Paste your LaTeX resume code and click <strong>Run & Save</strong> (or press <code>Ctrl+Enter</code>) to compile.</p>
+          <button class="btn btn-primary" id="btn-empty-run"><i class="fa-solid fa-play"></i> Run & Generate PDF</button>
+        </div>
+        <div class="pdf-container hidden" id="pdf-container">
+          <iframe id="pdf-frame" src="about:blank" title="LaTeX PDF Live Preview"></iframe>
+        </div>
+      </div>
+
+      <!-- Tab Content 2: Compilation Logs -->
+      <div class="tab-pane" id="logs-tab">
+        <div class="logs-toolbar">
+          <span id="log-status-text">No logs available</span>
+          <button class="sub-btn" id="btn-copy-logs"><i class="fa-regular fa-copy"></i> Copy Log</button>
+        </div>
+        <pre class="logs-viewer" id="logs-content">Run compilation to see LaTeX compiler output...</pre>
+      </div>
+    </section>
+  </main>
+
+  <!-- Folder Change Modal -->
+  <div class="modal-overlay hidden" id="folder-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-folder-gear"></i> Set Download Destination Folder</h3>
+        <button class="modal-close" id="btn-close-folder-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">All compiled resumes and downloaded PDFs will be saved directly to this path on your computer:</p>
+        <div class="input-group">
+          <input type="text" id="input-folder-path" placeholder="e.g. D:\Resumes or C:\Users\Hariprasad\Documents\Resumes">
+        </div>
+        <div class="preset-folders">
+          <span class="preset-title">Quick Presets:</span>
+          <button class="preset-tag" data-preset="workspace">Default (Project /output)</button>
+          <button class="preset-tag" data-preset="documents">My Documents\Resumes</button>
+          <button class="preset-tag" data-preset="desktop">Desktop\Resumes</button>
+          <button class="preset-tag" data-preset="downloads">Downloads</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="btn-cancel-folder">Cancel</button>
+        <button class="btn btn-primary" id="btn-save-folder">Save Destination Folder</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saved Resumes History Drawer -->
+  <div class="drawer-overlay hidden" id="history-drawer-overlay">
+    <div class="drawer" id="history-drawer">
+      <div class="drawer-header">
+        <h3><i class="fa-solid fa-clock-rotate-left"></i> Resumes in Download Folder</h3>
+        <button class="drawer-close" id="btn-close-drawer">&times;</button>
+      </div>
+      <div class="drawer-body">
+        <div class="history-list" id="history-list">
+          <p class="empty-list-msg">Loading saved resumes...</p>
+        </div>
+      </div>
+      <div class="drawer-footer">
+        <button class="btn btn-outline full-width" id="btn-drawer-open-folder">
+          <i class="fa-regular fa-folder-open"></i> Open Folder in Explorer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CodeMirror & Addons Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/stex/stex.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/brace-fold.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/searchcursor.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/search/search.min.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>

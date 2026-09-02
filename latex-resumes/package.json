@@ -1,0 +1,13 @@
+{
+  "name": "latex-resume-studio",
+  "version": "1.0.0",
+  "description": "Local Overleaf-like LaTeX Resume Studio with instant compilation and direct folder downloading",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
